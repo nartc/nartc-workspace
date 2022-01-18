@@ -1,3 +1,10 @@
+## [1.0.0-beta.8](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.7...ngx-bang-v1.0.0-beta.8) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang:** attempt to pass down the invalidat eto child proxies ([126dd6d](https://github.com/nartc/nartc-workspace/commit/126dd6d54cc405cfc3eb12a4d9b9992d87987ee7))
+
 ## [1.0.0-beta.7](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.6...ngx-bang-v1.0.0-beta.7) (2022-01-18)
 
 
