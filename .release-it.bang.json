@@ -25,7 +25,8 @@
       "infile": "packages/ngx-bang/CHANGELOG.md"
     },
     "@release-it/bumper": {
-      "out": ["packages/ngx-bang/package*.json"]
+      "in": "packages/ngx-bang/package.json",
+      "out": "packages/ngx-bang/package.json"
     }
   },
   "git": {
