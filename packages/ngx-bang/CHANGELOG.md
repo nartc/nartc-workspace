@@ -1,3 +1,15 @@
+## [1.0.0-beta.1](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.0...ngx-bang-v1.0.0-beta.1) (2022-01-18)
+
+
+### Features
+
+* **bang/async:** make connect aware of deps array ([f44f7c2](https://github.com/nartc/nartc-workspace/commit/f44f7c235c2c29901aa617e2b8227d5c2abdef67))
+
+
+### Documentations
+
+* **bang:** move ngx-bang-todo to ngx-bang-examples ([04767d4](https://github.com/nartc/nartc-workspace/commit/04767d4c5f972a9c4b8cc65a60a0272022780bc7))
+
 ## 1.0.0-beta.0 (2022-01-18)
 
 
