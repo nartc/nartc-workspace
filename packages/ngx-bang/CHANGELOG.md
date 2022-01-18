@@ -1,3 +1,10 @@
+## [1.0.0-beta.4](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.3...ngx-bang-v1.0.0-beta.4) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang:** expose logic to set invalidate via setInvalidate instead of just constructor ([38c0931](https://github.com/nartc/nartc-workspace/commit/38c09316915f71edda59dacb03be256b62b0acdc))
+
 ## [1.0.0-beta.3](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.2...ngx-bang-v1.0.0-beta.3) (2022-01-18)
 
 
