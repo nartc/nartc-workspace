@@ -1,0 +1,44 @@
+{
+  "projectType": "library",
+  "root": "packages/ngx-bang",
+  "sourceRoot": "packages/ngx-bang/src",
+  "prefix": "nartc",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/ngx-bang"],
+      "options": {
+        "project": "packages/ngx-bang/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ngx-bang/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/ngx-bang/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ngx-bang"],
+      "options": {
+        "jestConfig": "packages/ngx-bang/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/ngx-bang/src/**/*.ts",
+          "packages/ngx-bang/src/**/*.html",
+          "packages/ngx-bang/async/**/*.ts",
+          "packages/ngx-bang/async/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:ngx-bang", "type:lib"]
+}
