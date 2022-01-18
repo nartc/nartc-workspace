@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { effect, snapshot, State } from 'ngx-bang';
-import { connect } from 'ngx-bang/async';
+import { asyncConnect } from 'ngx-bang/async';
 import { tap } from 'rxjs';
 import { Todo, TodoFilter } from './todo';
 import { TodoService } from './todo.service';
@@ -79,7 +79,7 @@ export class TodoStore extends State<TodoState> {
 
   private loadTodo() {
     this.state.loading = true;
-    connect(
+    asyncConnect(
       this.state,
       'todos',
       this.todoService.getTodos().pipe(tap(() => (this.state.loading = false)))

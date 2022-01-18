@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { snapshot, state, StatefulDirectiveModule } from 'ngx-bang';
-import { connect } from 'ngx-bang/async';
+import { asyncConnect } from 'ngx-bang/async';
 import { interval, map } from 'rxjs';
 
 interface CounterState {
@@ -54,7 +54,7 @@ export class CounterComponent implements OnInit {
   });
 
   ngOnInit() {
-    connect(this.state, 'secondsPassed', [
+    asyncConnect(this.state, 'secondsPassed', [
       interval(1000).pipe(map((tick) => tick + 1)),
       ['count'],
     ]);

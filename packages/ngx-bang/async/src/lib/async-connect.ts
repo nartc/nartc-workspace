@@ -3,7 +3,7 @@ import { effect, getUnsubscribes, StateProxy } from 'ngx-bang';
 import type { Observable } from 'rxjs';
 import { isObservable } from 'rxjs';
 
-export function connect<TData extends object, TKey extends keyof TData>(
+export function asyncConnect<TData extends object, TKey extends keyof TData>(
   stateProxy: StateProxy<TData>,
   stateKey: TKey,
   connector:
