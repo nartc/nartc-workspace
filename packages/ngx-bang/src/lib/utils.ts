@@ -1,4 +1,4 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ApplicationRef, ChangeDetectorRef } from '@angular/core';
 import {
   EFFECTS,
   INVALIDATE,
@@ -68,34 +68,22 @@ export const canProxy = (x: unknown) =>
   !(x instanceof RegExp) &&
   !(x instanceof ArrayBuffer);
 
-export const isSupportedObject = (x: unknown): x is object =>
-  typeof x === 'object' &&
-  x !== null &&
-  (Array.isArray(x) || !(x as any)[Symbol.iterator]) &&
-  !(x instanceof WeakMap) &&
-  !(x instanceof WeakSet) &&
-  !(x instanceof Error) &&
-  !(x instanceof Number) &&
-  !(x instanceof Date) &&
-  !(x instanceof String) &&
-  !(x instanceof RegExp) &&
-  !(x instanceof ArrayBuffer);
-
-export const getVersion = (proxyObject: unknown): number | undefined =>
-  isObject(proxyObject) ? (proxyObject as any)[VERSION] : undefined;
+export const getVersion = (stateProxy: unknown): number | undefined =>
+  isObject(stateProxy) ? (stateProxy as any)[VERSION] : undefined;
 export const getWatchers = (stateProxy: any): Set<Watcher> =>
-  stateProxy[WATCHERS];
+  isObject(stateProxy) ? (stateProxy as any)[WATCHERS] : undefined;
 export const getPropWatchers = (stateProxy: any): Map<Path[number], Watcher> =>
-  stateProxy[PROP_WATCHERS];
+  isObject(stateProxy) ? (stateProxy as any)[PROP_WATCHERS] : undefined;
 export const getEffects = (stateProxy: any): Set<VoidFunction> =>
-  stateProxy[EFFECTS];
+  isObject(stateProxy) ? (stateProxy as any)[EFFECTS] : undefined;
 export const getUnsubscribes = (stateProxy: any): Set<Unsubscribe> =>
-  stateProxy[UNSUBSCRIBES];
+  isObject(stateProxy) ? (stateProxy as any)[UNSUBSCRIBES] : undefined;
 export const getSetUnsubscribes = (
   stateProxy: any
-): Map<Path[number], Unsubscribe> => stateProxy[SET_UNSUBSCRIBES];
+): Map<Path[number], Unsubscribe> =>
+  isObject(stateProxy) ? (stateProxy as any)[SET_UNSUBSCRIBES] : undefined;
 export const getInvalidate = (stateProxy: any): ((force?: boolean) => void) =>
-  stateProxy[INVALIDATE];
+  isObject(stateProxy) ? (stateProxy as any)[INVALIDATE] : undefined;
 export const getSnapshot = <TState extends object>(
   stateProxy: StateProxy<TState>
 ): TState =>
@@ -306,14 +294,23 @@ export function effect<TState extends object, TKey extends keyof TState>(
   );
 }
 
-export function createInvalidate(cdr: ChangeDetectorRef) {
+export function createInvalidate(
+  cdrOrAppRef: ChangeDetectorRef | ApplicationRef
+) {
   return (isAsync?: boolean) => {
+    const invalidate = () => {
+      if (cdrOrAppRef instanceof ChangeDetectorRef) {
+        cdrOrAppRef.markForCheck();
+      } else {
+        cdrOrAppRef.tick();
+      }
+    };
     if (isAsync) {
       requestAnimationFrame(() => {
-        cdr.markForCheck();
+        invalidate();
       });
     } else {
-      cdr.markForCheck();
+      invalidate();
     }
   };
 }

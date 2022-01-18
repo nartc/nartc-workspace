@@ -1,4 +1,5 @@
 import {
+  ApplicationRef,
   ChangeDetectorRef,
   Inject,
   Injectable,
@@ -31,6 +32,13 @@ export const ON_DESTROY = new InjectionToken('__on_destroy_token__', {
   },
 });
 
+export const INVALIDATE_HOST = new InjectionToken('__invalidate_host__', {
+  providedIn: 'root',
+  factory() {
+    return null;
+  },
+});
+
 @Injectable()
 export class State<TData extends object> implements OnDestroy {
   readonly state: StateProxy<TData>;
@@ -38,39 +46,28 @@ export class State<TData extends object> implements OnDestroy {
   private deriveProxies: Array<StateProxy<any>> = [];
 
   constructor(
-    protected cdr: ChangeDetectorRef | null,
+    @Optional()
+    @Inject(INVALIDATE_HOST)
+    protected cdrOrAppRef: ChangeDetectorRef | ApplicationRef,
     @Optional() @Inject(INITIAL_STATE) initialState: TData,
     @Optional() @Inject(ON_DESTROY) protected onDestroy?: VoidFunction
   ) {
     this.state = state<TData>(initialState);
-    if (cdr) {
-      setInvalidate(this.state, (this._invalidate = createInvalidate(cdr)));
-    }
+    setInvalidate(this.state, this.invalidate);
   }
 
   get snapshot(): TData {
     return getSnapshot(this.state);
   }
 
-  private _invalidate!: (isAsync?: boolean) => void;
-
-  setInvalidate(cdr: ChangeDetectorRef) {
-    if (!this._invalidate) {
-      setInvalidate(this.state, (this._invalidate = createInvalidate(cdr)));
-      this.deriveProxies.forEach((derived) => {
-        setInvalidate(derived, this._invalidate);
-      });
-    }
-  }
+  private invalidate = createInvalidate(this.cdrOrAppRef);
 
   protected createDerive<TDerived extends object>(
     deriveFns: DeriveFns<TDerived>,
     debounced = true
   ): StateProxy<TDerived> {
     const deriveProxy = derive(deriveFns, debounced);
-    if (this.cdr) {
-      setInvalidate(deriveProxy, this._invalidate);
-    }
+    setInvalidate(deriveProxy, this.invalidate);
     this.deriveProxies.push(deriveProxy);
     return deriveProxy;
   }
