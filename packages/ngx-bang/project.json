@@ -38,6 +38,20 @@
           "packages/ngx-bang/async/**/*.html"
         ]
       }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "dist/packages/ngx-bang"
+      }
+    },
+    "publish-beta": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npm publish --tag beta",
+        "cwd": "dist/packages/ngx-bang"
+      }
     }
   },
   "tags": ["scope:ngx-bang", "type:lib"]

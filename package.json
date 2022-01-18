@@ -6,7 +6,10 @@
     "postinstall": "ngcc --properties es2015 browser module main",
     "contributors:add": "all-contributors add",
     "serve:todo": "nx serve ngx-bang-todo",
-    "build:bang": "nx build ngx-bang"
+    "build:bang": "nx build ngx-bang",
+    "release:bang": "dotenv release-it -- --config=.release-it.bang.json",
+    "publish:bang": "nx publish ngx-bang",
+    "publish:bang:beta": "nx publish-beta ngx-bang"
   },
   "private": true,
   "dependencies": {

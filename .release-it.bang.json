@@ -22,14 +22,15 @@
           }
         ]
       },
-      "infile": "CHANGELOG.md"
+      "infile": "packages/ngx-bang/CHANGELOG.md"
     },
     "@release-it/bumper": {
       "out": ["packages/ngx-bang/package*.json"]
     }
   },
   "git": {
-    "commitMessage": "chore(repo): release ngx-bang ${version}"
+    "commitMessage": "chore(repo): release ngx-bang ${version}",
+    "tagName": "ngx-bang-v${version}"
   },
   "npm": {
     "publish": false
@@ -39,6 +40,10 @@
     "releaseName": "Release: ngx-bang ${version}"
   },
   "hooks": {
-    "after:bump": "npm run build:bang"
+    "after:bump": [
+      "git checkout -- package.json",
+      "git checkout -- package-lock.json",
+      "npm run build:bang"
+    ]
   }
 }
