@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "ngcc --properties es2015 browser module main",
     "contributors:add": "all-contributors add",
-    "serve:todo": "nx serve ngx-bang-todo",
+    "serve:bang": "nx serve ngx-bang-examples",
     "build:bang": "nx build ngx-bang",
     "release:bang": "dotenv release-it -- --config=.release-it.bang.json",
     "publish:bang": "nx publish ngx-bang",

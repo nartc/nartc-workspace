@@ -2,6 +2,6 @@
   "version": 2,
   "projects": {
     "ngx-bang": "packages/ngx-bang",
-    "ngx-bang-todo": "packages/ngx-bang-todo"
+    "ngx-bang-examples": "packages/ngx-bang-examples"
   }
 }

@@ -1,23 +1,23 @@
 {
   "projectType": "application",
-  "root": "packages/ngx-bang-todo",
-  "sourceRoot": "packages/ngx-bang-todo/src",
+  "root": "packages/ngx-bang-examples",
+  "sourceRoot": "packages/ngx-bang-examples/src",
   "prefix": "bang",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/ngx-bang-todo",
-        "index": "packages/ngx-bang-todo/src/index.html",
-        "main": "packages/ngx-bang-todo/src/main.ts",
-        "polyfills": "packages/ngx-bang-todo/src/polyfills.ts",
-        "tsConfig": "packages/ngx-bang-todo/tsconfig.app.json",
+        "outputPath": "dist/packages/ngx-bang-examples",
+        "index": "packages/ngx-bang-examples/src/index.html",
+        "main": "packages/ngx-bang-examples/src/main.ts",
+        "polyfills": "packages/ngx-bang-examples/src/polyfills.ts",
+        "tsConfig": "packages/ngx-bang-examples/tsconfig.app.json",
         "assets": [
-          "packages/ngx-bang-todo/src/favicon.ico",
-          "packages/ngx-bang-todo/src/assets"
+          "packages/ngx-bang-examples/src/favicon.ico",
+          "packages/ngx-bang-examples/src/assets"
         ],
-        "styles": ["packages/ngx-bang-todo/src/styles.css"],
+        "styles": ["packages/ngx-bang-examples/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -36,8 +36,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "packages/ngx-bang-todo/src/environments/environment.ts",
-              "with": "packages/ngx-bang-todo/src/environments/environment.prod.ts"
+              "replace": "packages/ngx-bang-examples/src/environments/environment.ts",
+              "with": "packages/ngx-bang-examples/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -57,10 +57,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "ngx-bang-todo:build:production"
+          "browserTarget": "ngx-bang-examples:build:production"
         },
         "development": {
-          "browserTarget": "ngx-bang-todo:build:development"
+          "browserTarget": "ngx-bang-examples:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -68,15 +68,15 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "ngx-bang-todo:build"
+        "browserTarget": "ngx-bang-examples:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "packages/ngx-bang-todo/src/**/*.ts",
-          "packages/ngx-bang-todo/src/**/*.html"
+          "packages/ngx-bang-examples/src/**/*.ts",
+          "packages/ngx-bang-examples/src/**/*.html"
         ]
       }
     }

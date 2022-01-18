@@ -16,32 +16,38 @@ import { TodoStore } from './todo.store';
 @Component({
   selector: 'bang-todo',
   template: `
-    <header class="header">
-      <h1>todos</h1>
-      <bang-todo-input
-        *ngIf="!todoStore.snapshot.loading; else loading"
-        (addTodo)="onAddTodo($event)"
-      ></bang-todo-input>
-    </header>
-    <bang-todo-list
-      *ngIf="todoStore.derived.hasTodo"
-      [todos]="todoStore.derived.filteredTodos"
-      (toggle)="onToggle($event.index)"
-      (update)="onUpdate($event)"
-      (delete)="onDelete($event.index)"
-    ></bang-todo-list>
-    <bang-todo-footer
-      *ngIf="todoStore.derived.hasTodo"
-      [hasCompletedTodos]="todoStore.derived.hasCompleteTodo"
-      [incompleteTodosCount]="todoStore.derived.incompleteTodosCount"
-      [currentFilter]="todoStore.snapshot.filter"
-      (filter)="onFilter($event)"
-      (clearCompleted)="onClearCompleted()"
-    ></bang-todo-footer>
+    <section class="todoapp">
+      <header class="header">
+        <h1>todos</h1>
+        <bang-todo-input
+          *ngIf="!todoStore.snapshot.loading; else loading"
+          (addTodo)="onAddTodo($event)"
+        ></bang-todo-input>
+      </header>
+      <bang-todo-list
+        *ngIf="todoStore.derived.hasTodo"
+        [todos]="todoStore.derived.filteredTodos"
+        (toggle)="onToggle($event.index)"
+        (update)="onUpdate($event)"
+        (delete)="onDelete($event.index)"
+      ></bang-todo-list>
+      <bang-todo-footer
+        *ngIf="todoStore.derived.hasTodo"
+        [hasCompletedTodos]="todoStore.derived.hasCompleteTodo"
+        [incompleteTodosCount]="todoStore.derived.incompleteTodosCount"
+        [currentFilter]="todoStore.snapshot.filter"
+        (filter)="onFilter($event)"
+        (clearCompleted)="onClearCompleted()"
+      ></bang-todo-footer>
 
-    <ng-template #loading>
-      <div>loading...</div>
-    </ng-template>
+      <ng-template #loading>
+        <div>loading...</div>
+      </ng-template>
+    </section>
+    <footer class="info">
+      <p>Double-click to edit a todo</p>
+      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+    </footer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TodoStore],

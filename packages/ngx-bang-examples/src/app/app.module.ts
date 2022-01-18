@@ -13,13 +13,20 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot(
       [
         {
-          path: ':filter',
+          path: 'counter',
+          loadChildren: () =>
+            import('./counter/counter.component').then(
+              (m) => m.CounterComponentModule
+            ),
+        },
+        {
+          path: 'todo/:filter',
           loadChildren: () =>
             import('./todo/todo.component').then((m) => m.TodoModule),
         },
         {
           path: '',
-          redirectTo: 'all',
+          redirectTo: 'counter',
           pathMatch: 'full',
         },
       ],
