@@ -1,7 +1,15 @@
-# ngx-bang
+## ngx-bang
 
-This library was generated with [Nx](https://nx.dev).
+`ngx-bang` is a lightweight proxy-based state management for [Angular](https://angular.io). As heavily inspired
+by [valtio](https://github.com/pmndrs/valtio) and [ngx-tansu](https://github.com/AmadeusITGroup/ngx-tansu), it borrows
+ideas and implementations of both inspirations then work in Angular Change Detection mechanism.
 
-## Running unit tests
+### Installation
 
-Run `nx test ngx-bang` to execute the unit tests.
+```shell
+npm install ngx-bang
+```
+
+### Usage
+
+Please check [Wiki] for more information.

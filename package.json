@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "ngcc --properties es2015 browser module main"
+    "postinstall": "ngcc --properties es2015 browser module main",
+    "serve:todo": "nx serve ngx-bang-todo",
+    "build:bang": "nx build ngx-bang"
   },
   "private": true,
   "dependencies": {
@@ -17,6 +19,8 @@
     "@angular/router": "~13.1.0",
     "proxy-compare": "2.0.2",
     "rxjs": "~7.4.0",
+    "todomvc-app-css": "2.4.1",
+    "todomvc-common": "1.0.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
