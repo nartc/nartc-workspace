@@ -1,3 +1,10 @@
+## [1.0.0-beta.3](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.2...ngx-bang-v1.0.0-beta.3) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang/async:** make successCallback for asyncEffect optional ([32bd304](https://github.com/nartc/nartc-workspace/commit/32bd30454de8197001b16a29cf1ccd3462452c22))
+
 ## [1.0.0-beta.2](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.1...ngx-bang-v1.0.0-beta.2) (2022-01-18)
 
 
