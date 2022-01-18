@@ -1,3 +1,10 @@
+## [1.0.0-beta.9](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.8...ngx-bang-v1.0.0-beta.9) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang:** fix equality ([7089b5d](https://github.com/nartc/nartc-workspace/commit/7089b5db3b9591aab5b524a50b05bf2b4c6b8cc0))
+
 ## [1.0.0-beta.8](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.7...ngx-bang-v1.0.0-beta.8) (2022-01-18)
 
 
