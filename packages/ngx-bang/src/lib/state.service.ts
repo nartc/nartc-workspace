@@ -38,26 +38,39 @@ export class State<TData extends object> implements OnDestroy {
   private deriveProxies: Array<StateProxy<any>> = [];
 
   constructor(
-    protected cdr: ChangeDetectorRef,
+    protected cdr: ChangeDetectorRef | null,
     @Optional() @Inject(INITIAL_STATE) initialState: TData,
     @Optional() @Inject(ON_DESTROY) protected onDestroy?: VoidFunction
   ) {
     this.state = state<TData>(initialState);
-    setInvalidate(this.state, this.invalidate);
+    if (cdr) {
+      setInvalidate(this.state, (this._invalidate = createInvalidate(cdr)));
+    }
   }
 
   get snapshot(): TData {
     return getSnapshot(this.state);
   }
 
-  private invalidate = createInvalidate(this.cdr);
+  private _invalidate!: (isAsync?: boolean) => void;
+
+  setInvalidate(cdr: ChangeDetectorRef) {
+    if (!this._invalidate) {
+      setInvalidate(this.state, (this._invalidate = createInvalidate(cdr)));
+      this.deriveProxies.forEach((derived) => {
+        setInvalidate(derived, this._invalidate);
+      });
+    }
+  }
 
   protected createDerive<TDerived extends object>(
     deriveFns: DeriveFns<TDerived>,
     debounced = true
   ): StateProxy<TDerived> {
     const deriveProxy = derive(deriveFns, debounced);
-    setInvalidate(deriveProxy, this.invalidate);
+    if (this.cdr) {
+      setInvalidate(deriveProxy, this._invalidate);
+    }
     this.deriveProxies.push(deriveProxy);
     return deriveProxy;
   }
