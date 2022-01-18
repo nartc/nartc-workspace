@@ -35,10 +35,6 @@ export const setGlobalVersion = (version: number) => {
   return globalVersion;
 };
 
-export const isProxy = (obj: unknown): obj is StateProxy<any> => {
-  return !!(obj as any)[VERSION];
-};
-
 export const noop = () => {};
 
 export function notEqual(a: unknown, b: unknown): boolean {
@@ -193,7 +189,7 @@ const internalEffect = <TState extends object>(
 export function destroy<TState extends object>(stateProxy: StateProxy<TState>) {
   Reflect.ownKeys(stateProxy).forEach((key) => {
     const propertyValue = stateProxy[key as keyof StateProxy<TState>];
-    if (isProxy(propertyValue)) {
+    if (getVersion(propertyValue)) {
       destroy(propertyValue as StateProxy<any>);
     }
   });
@@ -220,7 +216,7 @@ export function setInvalidate<TState extends object>(
   stateProxy[INVALIDATE as keyof typeof stateProxy] = invalidate as any;
   Reflect.ownKeys(stateProxy).forEach((key) => {
     const propertyValue = stateProxy[key as keyof StateProxy<TState>];
-    if (isProxy(propertyValue)) {
+    if (getVersion(propertyValue)) {
       setInvalidate(propertyValue as StateProxy<any>, invalidate);
     }
   });
