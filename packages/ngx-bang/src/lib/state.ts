@@ -22,6 +22,7 @@ import type {
 import {
   canProxy,
   getEffects,
+  getInvalidate,
   getSnapshot,
   getWatchers,
   globalVersion,
@@ -39,7 +40,8 @@ const snapshotCache = new WeakMap<
 >();
 
 export function state<TState extends object>(
-  initialState: TState = {} as TState
+  initialState: TState = {} as TState,
+  invalidate: (isAsync?: boolean) => void = noop
 ): StateProxy<TState> {
   if (!isObject(initialState)) {
     throw new Error('initialState must be an object');
@@ -51,7 +53,6 @@ export function state<TState extends object>(
   }
 
   let version = globalVersion;
-  let invalidate: (isAsync?: boolean) => void = noop;
 
   const unsubscribes = new Set<Unsubscribe>();
   const setUnsubscribes = new Map<Path[number], Unsubscribe>();
@@ -247,7 +248,7 @@ export function state<TState extends object>(
         getWatchers(nextValue).add(getPropWatcher(prop));
         getEffects(nextValue).add(getPropEffect(prop));
       } else if (canProxy(value)) {
-        nextValue = state(value);
+        nextValue = state(value, getInvalidate(receiver));
         getWatchers(nextValue).add(getPropWatcher(prop));
         getEffects(nextValue).add(getPropEffect(prop));
       } else {
