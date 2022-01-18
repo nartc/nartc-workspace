@@ -1,3 +1,10 @@
+## [1.0.0-beta.6](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.5...ngx-bang-v1.0.0-beta.6) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang:** attempt to fix how invalidate can be passed down to child proxies ([20e862b](https://github.com/nartc/nartc-workspace/commit/20e862b9a7f38e757438f114e66a07994297a08b))
+
 ## [1.0.0-beta.5](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.4...ngx-bang-v1.0.0-beta.5) (2022-01-18)
 
 
