@@ -9,22 +9,19 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "nartc",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-selector": [
           "error",
           {
             "type": "element",
-            "prefix": "nartc",
+            "prefix": "state",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/use-lifecycle-interface": 0,
+        "@typescript-eslint/no-empty-function": 0,
+        "@typescript-eslint/no-non-null-assertion": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/ban-ts-comment": 0
       }
     },
     {

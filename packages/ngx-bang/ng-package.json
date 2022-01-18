@@ -3,5 +3,6 @@
   "dest": "../../dist/packages/ngx-bang",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["proxy-compare"]
 }

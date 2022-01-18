@@ -1,0 +1,10 @@
+export const VERSION = Symbol('__version__');
+export const WATCHERS = Symbol('__watchers__');
+export const PROP_WATCHERS = Symbol('__prop_watchers__');
+export const EFFECTS = Symbol('__effects__');
+export const UNSUBSCRIBES = Symbol('__unsubscribes__');
+export const SET_UNSUBSCRIBES = Symbol('__set_unsubscribes__');
+export const SNAPSHOT = Symbol('__snapshot__');
+export const PREV_SNAPSHOT = Symbol('__prev_snapshot__');
+export const HANDLER = Symbol('__handler__');
+export const INVALIDATE = Symbol('__invalidate__');
