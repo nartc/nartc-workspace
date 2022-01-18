@@ -1,0 +1,44 @@
+{
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {
+            "type": "cleanup",
+            "section": "Cleanup"
+          },
+          {
+            "type": "docs",
+            "section": "Documentations"
+          }
+        ]
+      },
+      "infile": "CHANGELOG.md"
+    },
+    "@release-it/bumper": {
+      "out": ["packages/ngx-bang/package*.json"]
+    }
+  },
+  "git": {
+    "commitMessage": "chore(repo): release ngx-bang ${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release: ngx-bang ${version}"
+  },
+  "hooks": {
+    "after:bump": "npm run build:bang"
+  }
+}

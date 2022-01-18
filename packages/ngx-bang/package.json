@@ -1,6 +1,24 @@
 {
   "name": "ngx-bang",
   "version": "0.0.1",
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Chau Tran",
+    "email": "nartc7789@gmail.com",
+    "url": "https://nartc.me"
+  },
+  "description": "ngx-bang state management",
+  "keywords": [
+    "typescript",
+    "ngx-bang",
+    "angular",
+    "state management",
+    "proxy"
+  ],
   "peerDependencies": {
     "@angular/common": "^13.1.0",
     "@angular/core": "^13.1.0"
