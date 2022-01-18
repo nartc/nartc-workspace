@@ -1,3 +1,10 @@
+## [1.0.0-beta.7](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.6...ngx-bang-v1.0.0-beta.7) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang:** use getVersion for child proxies ([0c3b104](https://github.com/nartc/nartc-workspace/commit/0c3b1045a7c9dfb671d0615dd95f074158c371fe))
+
 ## [1.0.0-beta.6](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.5...ngx-bang-v1.0.0-beta.6) (2022-01-18)
 
 
