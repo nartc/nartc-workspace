@@ -229,7 +229,7 @@ export function state<TState extends object>(
           const propertyValue = receiver[key as keyof StateProxy<TState>];
           if (
             getVersion(propertyValue) &&
-            getInvalidate(propertyValue) !== noop
+            getInvalidate(propertyValue) === noop
           ) {
             setInvalidate(propertyValue, value);
           }
