@@ -1,3 +1,10 @@
+## [1.0.0-beta.5](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.4...ngx-bang-v1.0.0-beta.5) (2022-01-18)
+
+
+### Bug Fixes
+
+* **bang:** use AppRef in place of ChangeDetectorRef for root services ([d9326a7](https://github.com/nartc/nartc-workspace/commit/d9326a75dbb794f5b33bcf89e4a64f8661be32fc))
+
 ## [1.0.0-beta.4](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.3...ngx-bang-v1.0.0-beta.4) (2022-01-18)
 
 
