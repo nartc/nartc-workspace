@@ -214,12 +214,6 @@ export function setInvalidate<TState extends object>(
   invalidate: (isAsync?: boolean) => void
 ) {
   stateProxy[INVALIDATE as keyof typeof stateProxy] = invalidate as any;
-  Reflect.ownKeys(stateProxy).forEach((key) => {
-    const propertyValue = stateProxy[key as keyof StateProxy<TState>];
-    if (getVersion(propertyValue)) {
-      setInvalidate(propertyValue as StateProxy<any>, invalidate);
-    }
-  });
 }
 
 export function snapshot<TState extends object>(

@@ -24,6 +24,7 @@ import {
   getEffects,
   getInvalidate,
   getSnapshot,
+  getVersion,
   getWatchers,
   globalVersion,
   isObject,
@@ -31,6 +32,7 @@ import {
   notEqual,
   refSet,
   setGlobalVersion,
+  setInvalidate,
 } from './utils';
 
 const stateCache = new WeakMap<object, StateObject>();
@@ -223,6 +225,15 @@ export function state<TState extends object>(
 
       if (prop === INVALIDATE) {
         invalidate = value;
+        Reflect.ownKeys(receiver).forEach((key) => {
+          const propertyValue = receiver[key as keyof StateProxy<TState>];
+          if (
+            getVersion(propertyValue) &&
+            getInvalidate(propertyValue) !== noop
+          ) {
+            setInvalidate(propertyValue, value);
+          }
+        });
         return true;
       }
 
