@@ -13,7 +13,7 @@ export type EffectFnWithCondition = () => [
   (() => boolean)?
 ];
 
-export type StateProxy<TData extends object> = {
+export type StateProxy<TData extends object = object> = {
   [TKey in keyof TData]: TData[TKey] extends object
     ? StateProxy<TData[TKey]>
     : TData[TKey];

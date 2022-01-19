@@ -7,7 +7,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { snapshot, state, StatefulDirectiveModule } from 'ngx-bang';
 import { asyncConnect } from 'ngx-bang/async';
-import { interval, map } from 'rxjs';
+import { map, timer } from 'rxjs';
 
 interface CounterState {
   count: number;
@@ -25,7 +25,10 @@ interface CounterState {
       <button (click)="onIncrement()">+</button>
       <p>You have clicked increment: {{ snapshot.incrementCount }}</p>
       <p>You have clicked decrement: {{ snapshot.decrementCount }}</p>
-      <p>Seconds since last "count" changed: {{ snapshot.secondsPassed }}s</p>
+      <p>
+        Seconds since last "count" ({{ snapshot.count }}) changed:
+        {{ snapshot.secondsPassed }}s
+      </p>
     </ng-container>
   `,
   styles: [
@@ -55,7 +58,7 @@ export class CounterComponent implements OnInit {
 
   ngOnInit() {
     asyncConnect(this.state, 'secondsPassed', [
-      interval(1000).pipe(map((tick) => tick + 1)),
+      timer(0, 1000).pipe(map((tick) => tick + 1)),
       ['count'],
     ]);
   }

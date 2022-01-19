@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { effect, snapshot, State } from 'ngx-bang';
 import { asyncConnect } from 'ngx-bang/async';
@@ -54,10 +54,9 @@ export class TodoStore extends State<TodoState> {
   constructor(
     private todoService: TodoService,
     private router: Router,
-    private route: ActivatedRoute,
-    cdr: ChangeDetectorRef
+    private route: ActivatedRoute
   ) {
-    super(cdr, initialState);
+    super(initialState);
   }
 
   init() {

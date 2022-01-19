@@ -18,19 +18,15 @@ import {
   watch,
 } from './utils';
 
-export interface StatefulContext<
-  TData extends object,
-  TDerived extends object
-> {
+export interface StatefulContext<TData extends object> {
   $implicit: TData;
   stateful: TData;
-  derived: TDerived;
 }
 
 @Directive({
   selector: '[stateful]',
 })
-export class StatefulDirective<TData extends object, TDerived extends object>
+export class StatefulDirective<TData extends object>
   implements OnDestroy, OnInit
 {
   static ngTemplateGuard_stateful: 'binding';
@@ -43,31 +39,30 @@ export class StatefulDirective<TData extends object, TDerived extends object>
 
   @Input() statefulDebounced = true;
 
-  @Input() set statefulDerived(derived: StateProxy<TDerived>) {
-    this.derived = derived;
-    setInvalidate(this.derived, this.invalidate);
+  @Input() set statefulDerived(derived: StateProxy | Array<StateProxy>) {
+    this.deriveProxies = Array.isArray(derived) ? derived : [derived];
+    this.deriveProxies.forEach((deriveProxy) =>
+      setInvalidate(deriveProxy, this.invalidate)
+    );
   }
 
   private state!: StateProxy<TData>;
 
-  private derived?: StateProxy<TDerived>;
-  private viewRef?: EmbeddedViewRef<StatefulContext<TData, TDerived>>;
+  private viewRef?: EmbeddedViewRef<StatefulContext<TData>>;
 
+  private deriveProxies: Array<StateProxy<any>> = [];
   private invalidate = createInvalidate(this.cdr);
 
-  static ngTemplateContextGuard<
-    TData extends object = any,
-    TDerived extends object = any
-  >(
-    dir: StatefulDirective<TData, TDerived>,
+  static ngTemplateContextGuard<TData extends object = any>(
+    dir: StatefulDirective<TData>,
     ctx: unknown
-  ): ctx is StatefulContext<TData, TDerived> {
+  ): ctx is StatefulContext<TData> {
     return true;
   }
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private templateRef: TemplateRef<StatefulContext<TData, TDerived>>,
+    private templateRef: TemplateRef<StatefulContext<TData>>,
     private vcr: ViewContainerRef
   ) {}
 
@@ -91,15 +86,12 @@ export class StatefulDirective<TData extends object, TDerived extends object>
     this.viewRef = this.vcr.createEmbeddedView(this.templateRef, {
       $implicit: currentSnapshot,
       stateful: currentSnapshot,
-      derived: this.derived ? snapshot(this.derived) : ({} as TDerived),
     });
   }
 
   ngOnDestroy() {
     destroy(this.state);
-    if (this.derived) {
-      destroy(this.derived);
-    }
+    this.deriveProxies.forEach(destroy);
   }
 }
 
