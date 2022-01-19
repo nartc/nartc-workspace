@@ -1,3 +1,23 @@
+## [1.0.0-beta.14](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.13...ngx-bang-v1.0.0-beta.14) (2022-01-19)
+
+
+### Features
+
+* **bang:** add SnapshotPipe ([3eb272d](https://github.com/nartc/nartc-workspace/commit/3eb272d7fc92dc9c7bfee5e679a23b3c108fbfba))
+
+
+### Bug Fixes
+
+* **bang:** keep track of derives in a StateProxy for dispose ([83bc629](https://github.com/nartc/nartc-workspace/commit/83bc6294ce29d2c8121556108fc94eff06af0ea6))
+* **bang:** remove derives input from StatefulDirective ([392c7cb](https://github.com/nartc/nartc-workspace/commit/392c7cbd7bd910766fdb82bc7a865c2de1d02e3f))
+* **bang:** remove derives remnant from StatefulDirective ([ad5680b](https://github.com/nartc/nartc-workspace/commit/ad5680bb0444d9a1cb393baf9d7e409c295e8012))
+* **bang:** set invalidate on derived based on the original StateProxy ([4bbe75d](https://github.com/nartc/nartc-workspace/commit/4bbe75dd5dc7996276fa9dffa83aa3478f29b40d))
+
+
+### Documentations
+
+* **bang:** add derive state to Counter example ([e7be09f](https://github.com/nartc/nartc-workspace/commit/e7be09fcdaa78343f9d1b4185f41a562b3754677))
+
 ## [1.0.0-beta.13](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.12...ngx-bang-v1.0.0-beta.13) (2022-01-19)
 
 
