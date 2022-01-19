@@ -5,7 +5,13 @@ import type {
   DeriveSubscriptions,
   StateProxy,
 } from './types';
-import { getSnapshot, getVersion, watch } from './utils';
+import {
+  getInvalidate,
+  getSnapshot,
+  getVersion,
+  setInvalidate,
+  watch,
+} from './utils';
 
 const subscriptionsCache = new WeakMap<
   StateProxy,
@@ -97,6 +103,11 @@ export const derive = <TDerive extends object>(
       }
       const dependencies = new Map<StateProxy, number>();
       const get = <P extends object>(p: StateProxy<P>) => {
+        const stateInvalidate = getInvalidate(p);
+        const derivedInvalidate = getInvalidate(derivedProxy);
+        if (stateInvalidate !== derivedInvalidate) {
+          setInvalidate(derivedProxy, stateInvalidate);
+        }
         dependencies.set(p, getVersion(p) as number);
         return p;
       };
