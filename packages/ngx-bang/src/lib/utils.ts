@@ -1,5 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
 import {
+  DERIVES,
   EFFECTS,
   INVALIDATE,
   PREV_SNAPSHOT,
@@ -72,6 +73,8 @@ export const getPropWatchers = (stateProxy: any): Map<Path[number], Watcher> =>
   isObject(stateProxy) ? (stateProxy as any)[PROP_WATCHERS] : undefined;
 export const getEffects = (stateProxy: any): Set<VoidFunction> =>
   isObject(stateProxy) ? (stateProxy as any)[EFFECTS] : undefined;
+export const getDerives = (stateProxy: any): Set<StateProxy> =>
+  isObject(stateProxy) ? (stateProxy as any)[DERIVES] : undefined;
 export const getUnsubscribes = (stateProxy: any): Set<Unsubscribe> =>
   isObject(stateProxy) ? (stateProxy as any)[UNSUBSCRIBES] : undefined;
 export const getSetUnsubscribes = (
@@ -197,6 +200,7 @@ export function destroy<TState extends object>(stateProxy: StateProxy<TState>) {
   const effects = getEffects(stateProxy);
   const watchers = getWatchers(stateProxy);
   const propWatchers = getPropWatchers(stateProxy);
+  const derives = getDerives(stateProxy);
   const unsubscribes = getUnsubscribes(stateProxy);
   const setUnsubscribes = getSetUnsubscribes(stateProxy);
 
@@ -207,6 +211,10 @@ export function destroy<TState extends object>(stateProxy: StateProxy<TState>) {
   unsubscribes.clear();
   setUnsubscribes.forEach(callUnsubscribe);
   setUnsubscribes.clear();
+
+  if (derives?.size > 0) {
+    derives.forEach(destroy);
+  }
 }
 
 export function setInvalidate<TState extends object>(

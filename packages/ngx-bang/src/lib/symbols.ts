@@ -8,3 +8,4 @@ export const SNAPSHOT = Symbol('__snapshot__');
 export const PREV_SNAPSHOT = Symbol('__prev_snapshot__');
 export const HANDLER = Symbol('__handler__');
 export const INVALIDATE = Symbol('__invalidate__');
+export const DERIVES = Symbol('__derives__');

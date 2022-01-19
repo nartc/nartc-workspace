@@ -6,6 +6,7 @@ import type {
   StateProxy,
 } from './types';
 import {
+  getDerives,
   getInvalidate,
   getSnapshot,
   getVersion,
@@ -102,12 +103,19 @@ export const derive = <TDerive extends object>(
         }
       }
       const dependencies = new Map<StateProxy, number>();
+
       const get = <P extends object>(p: StateProxy<P>) => {
+        const derives = getDerives(p);
+        if (!derives?.has(derivedProxy)) {
+          derives.add(derivedProxy);
+        }
+
         const stateInvalidate = getInvalidate(p);
         const derivedInvalidate = getInvalidate(derivedProxy);
         if (stateInvalidate !== derivedInvalidate) {
           setInvalidate(derivedProxy, stateInvalidate);
         }
+
         dependencies.set(p, getVersion(p) as number);
         return p;
       };

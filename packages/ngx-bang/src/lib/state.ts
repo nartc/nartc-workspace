@@ -1,5 +1,6 @@
 import { getUntracked, markToTrack } from 'proxy-compare';
 import {
+  DERIVES,
   EFFECTS,
   HANDLER,
   INVALIDATE,
@@ -66,6 +67,7 @@ export function state<TState extends object>(
   let version = globalVersion;
   let invalidate = noop;
 
+  const derives = new Set<StateProxy>();
   const unsubscribes = new Set<Unsubscribe>();
   const setUnsubscribes = new Map<Path[number], Unsubscribe>();
 
@@ -202,6 +204,10 @@ export function state<TState extends object>(
 
       if (prop === INVALIDATE) {
         return invalidate;
+      }
+
+      if (prop === DERIVES) {
+        return derives;
       }
 
       return Reflect.get(target, prop, receiver);
