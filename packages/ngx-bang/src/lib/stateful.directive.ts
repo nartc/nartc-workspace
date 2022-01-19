@@ -20,7 +20,7 @@ import {
 
 export interface StatefulContext<
   TData extends object,
-  TDerived extends object = never
+  TDerived extends object
 > {
   $implicit: TData;
   stateful: TData;
@@ -30,12 +30,11 @@ export interface StatefulContext<
 @Directive({
   selector: '[stateful]',
 })
-export class StatefulDirective<
-  TData extends object,
-  TDerived extends object = never
-> implements OnDestroy, OnInit
+export class StatefulDirective<TData extends object, TDerived extends object>
+  implements OnDestroy, OnInit
 {
   static ngTemplateGuard_stateful: 'binding';
+  static ngTemplateGuard_statefulDerived: 'binding';
 
   @Input() set stateful(state: StateProxy<TData>) {
     this.state = state;
@@ -58,7 +57,7 @@ export class StatefulDirective<
 
   static ngTemplateContextGuard<
     TData extends object = any,
-    TDerived extends object = never
+    TDerived extends object = any
   >(
     dir: StatefulDirective<TData, TDerived>,
     ctx: unknown
@@ -68,7 +67,7 @@ export class StatefulDirective<
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private templateRef: TemplateRef<StatefulContext<TData>>,
+    private templateRef: TemplateRef<StatefulContext<TData, TDerived>>,
     private vcr: ViewContainerRef
   ) {}
 
