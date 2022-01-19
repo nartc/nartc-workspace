@@ -94,7 +94,6 @@ export class StatefulDirective<TData extends object>
 
   ngOnDestroy() {
     destroy(this.state);
-    // this.deriveProxies.forEach(destroy);
     if (this.viewRef) {
       this.viewRef.destroy();
     }
