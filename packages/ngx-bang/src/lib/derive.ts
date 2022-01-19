@@ -8,7 +8,7 @@ import type {
 import { getSnapshot, getVersion, watch } from './utils';
 
 const subscriptionsCache = new WeakMap<
-  StateProxy<object>,
+  StateProxy,
   DeriveSubscriptions<object>
 >();
 
@@ -23,6 +23,15 @@ const getSubscriptions = <TData extends object>(
   return subscriptions as unknown as DeriveSubscriptions<TData>;
 };
 
+/**
+ * Create a derived `StateProxy`
+ *
+ * @template TDerive
+ * @param {DeriveFns<TDerive>} derivedFns - A Record/Dictionary of derived key and a function that returns the value for that key
+ * @param {boolean} [debounced=true] - Whether to debounce the value changes from the original `StateProxy`
+ *
+ * @returns {StateProxy<TDerive>}
+ */
 export const derive = <TDerive extends object>(
   derivedFns: DeriveFns<TDerive>,
   debounced = true
@@ -76,7 +85,7 @@ export const derive = <TDerive extends object>(
       throw new Error('object property already defined');
     }
     const fn = derivedFns[key];
-    let lastDependencies: Map<StateProxy<object>, number> | null = null;
+    let lastDependencies: Map<StateProxy, number> | null = null;
     const evaluate = () => {
       if (lastDependencies) {
         if (
@@ -86,7 +95,7 @@ export const derive = <TDerive extends object>(
           return;
         }
       }
-      const dependencies = new Map<StateProxy<object>, number>();
+      const dependencies = new Map<StateProxy, number>();
       const get = <P extends object>(p: StateProxy<P>) => {
         dependencies.set(p, getVersion(p) as number);
         return p;

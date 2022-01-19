@@ -6,6 +6,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nartc/nartc-workspace",
+    "directory": "packages/ngx-bang"
+  },
   "author": {
     "name": "Chau Tran",
     "email": "nartc7789@gmail.com",

@@ -50,7 +50,7 @@ export class StatefulDirective<TData extends object>
 
   private viewRef?: EmbeddedViewRef<StatefulContext<TData>>;
 
-  private deriveProxies: Array<StateProxy<any>> = [];
+  private deriveProxies: Array<StateProxy> = [];
   private invalidate = createInvalidate(this.cdr);
 
   static ngTemplateContextGuard<TData extends object = any>(

@@ -2,6 +2,17 @@
 import { getUnsubscribes, StateProxy } from 'ngx-bang';
 import { isObservable, Observable } from 'rxjs';
 
+/**
+ * Execute side-effect for StateProxy
+ *
+ * @template TData, TAsyncValue
+ * @param {StateProxy<TData>} stateProxy - the `StateProxy` that this Effect is associated with
+ * @param {Observable<TAsyncValue> | PromiseLike<TAsyncValue>} effect - the effect to run
+ * @param {(value: TAsyncValue) => void} [successCallback] - after the effect runs and succeeds, optionally invoke this callback
+ * @param {(error: any) => void} [errorCallback] - after the effect runs and errors, optionally invoke this callback
+ *
+ * @returns {void}
+ */
 export function asyncEffect<TData extends object, TAsyncValue>(
   stateProxy: StateProxy<TData>,
   effect: Observable<TAsyncValue> | PromiseLike<TAsyncValue>,

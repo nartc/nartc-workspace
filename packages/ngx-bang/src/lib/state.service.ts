@@ -28,7 +28,7 @@ export const ON_DESTROY = new InjectionToken('__on_destroy_token__', {
 export class State<TData extends object> implements OnDestroy {
   readonly state: StateProxy<TData>;
 
-  private deriveProxies: Array<StateProxy<any>> = [];
+  private deriveProxies: Array<StateProxy> = [];
 
   constructor(
     @Optional() @Inject(INITIAL_STATE) initialState: TData,

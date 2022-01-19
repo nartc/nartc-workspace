@@ -190,7 +190,7 @@ export function destroy<TState extends object>(stateProxy: StateProxy<TState>) {
   Reflect.ownKeys(stateProxy).forEach((key) => {
     const propertyValue = stateProxy[key as keyof StateProxy<TState>];
     if (getVersion(propertyValue)) {
-      destroy(propertyValue as StateProxy<any>);
+      destroy(propertyValue as StateProxy);
     }
   });
 

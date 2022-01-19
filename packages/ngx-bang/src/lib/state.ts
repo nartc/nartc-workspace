@@ -41,6 +41,15 @@ const snapshotCache = new WeakMap<
   [version: number, snapshot: unknown]
 >();
 
+/**
+ * Create a `StateProxy` to manage states
+ *
+ * @template TState
+ * @param {TState} initialState - initial state for the Proxy
+ * @param {boolean} [root=true] - whether this is a Proxy created by the user invoking `state()`
+ *
+ * @returns {StateProxy<TState>}
+ */
 export function state<TState extends object>(
   initialState: TState = {} as TState,
   root = true
