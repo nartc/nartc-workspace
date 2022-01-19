@@ -1,3 +1,10 @@
+## [1.0.0-beta.11](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.10...ngx-bang-v1.0.0-beta.11) (2022-01-19)
+
+
+### Bug Fixes
+
+* **bang:** adjust typings for TDerived ([fa1a364](https://github.com/nartc/nartc-workspace/commit/fa1a36425ef5fec98305b4ea4e30d9e7f193c3ab))
+
 ## [1.0.0-beta.10](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.9...ngx-bang-v1.0.0-beta.10) (2022-01-19)
 
 
