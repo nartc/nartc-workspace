@@ -1,3 +1,10 @@
+## [1.0.0-beta.13](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.12...ngx-bang-v1.0.0-beta.13) (2022-01-19)
+
+
+### Bug Fixes
+
+* **bang:** adjust StateProxy typings and add documentations ([eaf38ae](https://github.com/nartc/nartc-workspace/commit/eaf38ae82517f12ca687e1037ba225fea64b6012))
+
 ## [1.0.0-beta.12](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.11...ngx-bang-v1.0.0-beta.12) (2022-01-19)
 
 
