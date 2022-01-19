@@ -93,7 +93,7 @@ export class TodoComponent implements OnInit {
     TodoFooterComponent,
   ],
   imports: [
-    RouterModule.forChild([{ path: '', component: TodoComponent }]),
+    RouterModule.forChild([{ path: ':filter', component: TodoComponent }]),
     CommonModule,
   ],
 })

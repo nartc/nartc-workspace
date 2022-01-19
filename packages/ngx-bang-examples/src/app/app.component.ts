@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'bang-root',
   template: `
     <ul class="nav">
-      <li routerLink="counter">Counter</li>
-      <li routerLink="todo/all">Todo</li>
+      <li routerLink="/counter">Counter</li>
+      <li routerLink="/todo/all">Todo</li>
     </ul>
     <router-outlet></router-outlet>
   `,

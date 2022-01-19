@@ -1,4 +1,4 @@
-import { ApplicationRef, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import {
   EFFECTS,
   INVALIDATE,
@@ -290,23 +290,14 @@ export function effect<TState extends object, TKey extends keyof TState>(
   );
 }
 
-export function createInvalidate(
-  cdrOrAppRef: ChangeDetectorRef | ApplicationRef
-) {
+export function createInvalidate(cdr: ChangeDetectorRef) {
   return (isAsync?: boolean) => {
-    const invalidate = () => {
-      if (cdrOrAppRef instanceof ChangeDetectorRef) {
-        cdrOrAppRef.markForCheck();
-      } else {
-        cdrOrAppRef.tick();
-      }
-    };
     if (isAsync) {
       requestAnimationFrame(() => {
-        invalidate();
+        cdr.markForCheck();
       });
     } else {
-      invalidate();
+      cdr.markForCheck();
     }
   };
 }

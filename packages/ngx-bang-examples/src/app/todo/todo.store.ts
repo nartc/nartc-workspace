@@ -90,15 +90,15 @@ export class TodoStore extends State<TodoState> {
     effect(this.state, ['filter'], () => {
       switch (this.snapshot.filter) {
         case 'SHOW_ACTIVE': {
-          void this.router.navigate(['/', 'active']);
+          void this.router.navigate(['/todo', 'active']);
           break;
         }
         case 'SHOW_COMPLETED': {
-          void this.router.navigate(['/', 'completed']);
+          void this.router.navigate(['/todo', 'completed']);
           break;
         }
         default: {
-          void this.router.navigate(['/', 'all']);
+          void this.router.navigate(['/todo', 'all']);
           break;
         }
       }

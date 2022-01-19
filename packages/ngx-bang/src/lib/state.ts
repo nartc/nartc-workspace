@@ -43,7 +43,7 @@ const snapshotCache = new WeakMap<
 
 export function state<TState extends object>(
   initialState: TState = {} as TState,
-  invalidate: (isAsync?: boolean) => void = noop
+  root = true
 ): StateProxy<TState> {
   if (!isObject(initialState)) {
     throw new Error('initialState must be an object');
@@ -55,6 +55,7 @@ export function state<TState extends object>(
   }
 
   let version = globalVersion;
+  let invalidate = noop;
 
   const unsubscribes = new Set<Unsubscribe>();
   const setUnsubscribes = new Map<Path[number], Unsubscribe>();
@@ -231,7 +232,7 @@ export function state<TState extends object>(
             getVersion(propertyValue) &&
             getInvalidate(propertyValue) === noop
           ) {
-            setInvalidate(propertyValue, value);
+            setInvalidate(propertyValue, invalidate);
           }
         });
         return true;
@@ -259,7 +260,7 @@ export function state<TState extends object>(
         getWatchers(nextValue).add(getPropWatcher(prop));
         getEffects(nextValue).add(getPropEffect(prop));
       } else if (canProxy(value)) {
-        nextValue = state(value, getInvalidate(receiver));
+        nextValue = state(value, false);
         getWatchers(nextValue).add(getPropWatcher(prop));
         getEffects(nextValue).add(getPropEffect(prop));
       } else {
@@ -267,7 +268,9 @@ export function state<TState extends object>(
       }
 
       Reflect.set(target, prop, nextValue, receiver);
-      invalidate();
+      if (root) {
+        invalidate();
+      }
       notifyWatcher(['set', [prop], value, prevValue]);
       notifyEffect();
 

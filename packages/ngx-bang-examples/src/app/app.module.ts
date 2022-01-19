@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
             ),
         },
         {
-          path: 'todo/:filter',
+          path: 'todo',
           loadChildren: () =>
             import('./todo/todo.component').then((m) => m.TodoModule),
         },

@@ -1,5 +1,4 @@
 import {
-  ApplicationRef,
   ChangeDetectorRef,
   Inject,
   Injectable,
@@ -32,13 +31,6 @@ export const ON_DESTROY = new InjectionToken('__on_destroy_token__', {
   },
 });
 
-export const INVALIDATE_HOST = new InjectionToken('__invalidate_host__', {
-  providedIn: 'root',
-  factory() {
-    return null;
-  },
-});
-
 @Injectable()
 export class State<TData extends object> implements OnDestroy {
   readonly state: StateProxy<TData>;
@@ -46,9 +38,7 @@ export class State<TData extends object> implements OnDestroy {
   private deriveProxies: Array<StateProxy<any>> = [];
 
   constructor(
-    @Optional()
-    @Inject(INVALIDATE_HOST)
-    protected cdrOrAppRef: ChangeDetectorRef | ApplicationRef,
+    protected cdr: ChangeDetectorRef,
     @Optional() @Inject(INITIAL_STATE) initialState: TData,
     @Optional() @Inject(ON_DESTROY) protected onDestroy?: VoidFunction
   ) {
@@ -60,7 +50,7 @@ export class State<TData extends object> implements OnDestroy {
     return getSnapshot(this.state);
   }
 
-  private invalidate = createInvalidate(this.cdrOrAppRef);
+  private invalidate = createInvalidate(this.cdr);
 
   protected createDerive<TDerived extends object>(
     deriveFns: DeriveFns<TDerived>,
