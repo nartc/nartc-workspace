@@ -1,3 +1,10 @@
+## [1.0.0-beta.12](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.11...ngx-bang-v1.0.0-beta.12) (2022-01-19)
+
+
+### Bug Fixes
+
+* **bang:** force State to use stateful as well ([fe37dc6](https://github.com/nartc/nartc-workspace/commit/fe37dc62ee3fc0460a9417a891a2fe3fe5f669ec))
+
 ## [1.0.0-beta.11](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.10...ngx-bang-v1.0.0-beta.11) (2022-01-19)
 
 
