@@ -1,3 +1,10 @@
+## [1.0.0-beta.10](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.9...ngx-bang-v1.0.0-beta.10) (2022-01-19)
+
+
+### Bug Fixes
+
+* **bang:** revert to not using AppRef because it doesn't work as expecte ([25ac8fb](https://github.com/nartc/nartc-workspace/commit/25ac8fbff9d3242441336a40bb658ad56e61a6d3))
+
 ## [1.0.0-beta.9](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.8...ngx-bang-v1.0.0-beta.9) (2022-01-18)
 
 
