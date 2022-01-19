@@ -40,17 +40,17 @@ export class StatefulDirective<TData extends object>
   @Input() statefulDebounced = true;
 
   @Input() set statefulDerived(derived: StateProxy | Array<StateProxy>) {
-    this.deriveProxies = Array.isArray(derived) ? derived : [derived];
-    this.deriveProxies.forEach((deriveProxy) =>
-      setInvalidate(deriveProxy, this.invalidate)
-    );
+    // this.deriveProxies = Array.isArray(derived) ? derived : [derived];
+    // this.deriveProxies.forEach((deriveProxy) =>
+    //   setInvalidate(deriveProxy, this.invalidate)
+    // );
   }
 
   private state!: StateProxy<TData>;
 
   private viewRef?: EmbeddedViewRef<StatefulContext<TData>>;
 
-  private deriveProxies: Array<StateProxy> = [];
+  // private deriveProxies: Array<StateProxy> = [];
   private invalidate = createInvalidate(this.cdr);
 
   static ngTemplateContextGuard<TData extends object = any>(
@@ -71,8 +71,11 @@ export class StatefulDirective<TData extends object>
     watch(
       this.state,
       () => {
-        this.render();
-        this.cdr.detectChanges();
+        if (this.viewRef) {
+          const latestSnapshot = snapshot(this.state);
+          this.viewRef.context.stateful = latestSnapshot;
+          this.viewRef.context.$implicit = latestSnapshot;
+        }
       },
       this.statefulDebounced
     );
@@ -91,7 +94,11 @@ export class StatefulDirective<TData extends object>
 
   ngOnDestroy() {
     destroy(this.state);
-    this.deriveProxies.forEach(destroy);
+    // this.deriveProxies.forEach(destroy);
+    if (this.viewRef) {
+      this.viewRef.destroy();
+    }
+    this.vcr.clear();
   }
 }
 
