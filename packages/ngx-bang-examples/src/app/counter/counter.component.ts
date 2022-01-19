@@ -5,7 +5,13 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { snapshot, state, StatefulDirectiveModule } from 'ngx-bang';
+import {
+  derive,
+  snapshot,
+  SnapshotPipeModule,
+  state,
+  StatefulDirectiveModule,
+} from 'ngx-bang';
 import { asyncConnect } from 'ngx-bang/async';
 import { map, timer } from 'rxjs';
 
@@ -21,7 +27,9 @@ interface CounterState {
   template: `
     <ng-container *stateful="state; let snapshot">
       <button (click)="onDecrement()">-</button>
-      <span>{{ snapshot.count }}</span>
+      <span>
+        Double of {{ snapshot.count }} is {{ (derived | snap).double }}
+      </span>
       <button (click)="onIncrement()">+</button>
       <p>You have clicked increment: {{ snapshot.incrementCount }}</p>
       <p>You have clicked decrement: {{ snapshot.decrementCount }}</p>
@@ -56,6 +64,10 @@ export class CounterComponent implements OnInit {
     secondsPassed: 0,
   });
 
+  derived = derive({
+    double: (get) => get(this.state).count * 2,
+  });
+
   ngOnInit() {
     asyncConnect(this.state, 'secondsPassed', [
       timer(0, 1000).pipe(map((tick) => tick + 1)),
@@ -81,6 +93,7 @@ export class CounterComponent implements OnInit {
   imports: [
     RouterModule.forChild([{ path: '', component: CounterComponent }]),
     StatefulDirectiveModule,
+    SnapshotPipeModule,
   ],
 })
 export class CounterComponentModule {}
