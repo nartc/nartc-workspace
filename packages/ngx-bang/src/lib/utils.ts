@@ -189,6 +189,12 @@ const internalEffect = <TState extends object>(
   return unsubscribe;
 };
 
+/**
+ * Clean up all listeners of a StateProxy
+ *
+ * @template TState
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to destroy
+ */
 export function destroy<TState extends object>(stateProxy: StateProxy<TState>) {
   Reflect.ownKeys(stateProxy).forEach((key) => {
     const propertyValue = stateProxy[key as keyof StateProxy<TState>];
@@ -224,6 +230,15 @@ export function setInvalidate<TState extends object>(
   stateProxy[INVALIDATE as keyof typeof stateProxy] = invalidate as any;
 }
 
+/**
+ *
+ * Retrieve the snapshot for a StateProxy
+ *
+ * @template TState
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to get the snapshot for
+ * @param {boolean} [prev = false] - whether to get the previous snapshot or the current
+ * @returns {TState} - The snapshot
+ */
 export function snapshot<TState extends object>(
   stateProxy: StateProxy<TState>,
   prev = false
@@ -232,6 +247,36 @@ export function snapshot<TState extends object>(
   return getSnapshot(stateProxy);
 }
 
+/**
+ * Watch StateProxy changes
+ *
+ * @template TState
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
+ * @param {(ops: Op[]) => void} callback - callback to invoke when state changes
+ * @param {boolean} [debounced = true] - whether to invoke callback with debounced changes or not.
+ * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
+ */
+export function watch<TState extends object>(
+  stateProxy: StateProxy<TState>,
+  callback: (ops: Op[]) => void,
+  debounced?: boolean
+): VoidFunction;
+/**
+ * Watch changes of properties in StateProxy
+ *
+ * @template TState, TKey
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
+ * @param {TKey[]} keys - a list of StateProxy properties to watch
+ * @param {...values: TState[TKey][]} callback - callback to invoke when the properties (being watched) change
+ * @param {boolean} [debounced = true] - whether to invoke callback with debounced changes or not.
+ * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
+ */
+export function watch<TState extends object, TKey extends keyof TState>(
+  stateProxy: StateProxy<TState>,
+  keys: TKey[],
+  callback: (...values: TState[TKey][]) => void,
+  debounced?: boolean
+): VoidFunction;
 export function watch<TState extends object, TKey extends keyof TState>(
   stateProxy: StateProxy<TState>,
   ...args:
@@ -259,6 +304,36 @@ export function watch<TState extends object, TKey extends keyof TState>(
   );
 }
 
+/**
+ * Execute effect on state changes
+ *
+ * @template TState
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
+ * @param {EffectFn} effectFn - the effectFn to invoke on State changes
+ * @param {boolean} [debounced = true]
+ * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
+ */
+export function effect<TState extends object>(
+  stateProxy: StateProxy<TState>,
+  effectFn: EffectFn,
+  debounced?: boolean
+): VoidFunction;
+/**
+ * Execute effect on properties changes
+ *
+ * @template TState, TKey
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
+ * @param {TKey[]} keys - list of properties to watch
+ * @param {EffectFn} effectFn - the effectFn to invoke on State changes
+ * @param {boolean} [debounced = true]
+ * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
+ */
+export function effect<TState extends object, TKey extends keyof TState>(
+  stateProxy: StateProxy<TState>,
+  keys: TKey[],
+  effectFn: EffectFn,
+  debounced?: boolean
+): VoidFunction;
 export function effect<TState extends object, TKey extends keyof TState>(
   stateProxy: StateProxy<TState>,
   ...args: [TKey[], EffectFn, boolean?] | [EffectFn, boolean?]
@@ -298,6 +373,10 @@ export function effect<TState extends object, TKey extends keyof TState>(
   );
 }
 
+/**
+ * @internal
+ * @param {ChangeDetectorRef} cdr
+ */
 export function createInvalidate(cdr: ChangeDetectorRef) {
   return (isAsync?: boolean) => {
     if (isAsync) {

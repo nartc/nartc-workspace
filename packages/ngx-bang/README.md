@@ -12,4 +12,4 @@ npm install ngx-bang
 
 ### Usage
 
-Please check [Wiki] for more information.
+Please check [Wiki](https://github.com/nartc/nartc-workspace/wiki/Bang-Features) for more information.
