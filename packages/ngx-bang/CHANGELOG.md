@@ -1,3 +1,16 @@
+## [1.0.0-beta.18](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.17...ngx-bang-v1.0.0-beta.18) (2022-01-20)
+
+
+### Bug Fixes
+
+* **bang:** remove SnapshotPipe (unncesssary) ([fb52ca6](https://github.com/nartc/nartc-workspace/commit/fb52ca6d91bd43c4dd84d9a94e37973bca161474))
+
+
+### Documentations
+
+* **bang/async:** add jsdocs for asyncActions ([cbcdb79](https://github.com/nartc/nartc-workspace/commit/cbcdb790dffc505db319baf6040bcba69c050797))
+* **bang:** add jsdocs and update readme ([7d24fab](https://github.com/nartc/nartc-workspace/commit/7d24fab57fbb0dfcbbfcd137abd9921d5bc3661c))
+
 ## [1.0.0-beta.17](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.16...ngx-bang-v1.0.0-beta.17) (2022-01-20)
 
 
