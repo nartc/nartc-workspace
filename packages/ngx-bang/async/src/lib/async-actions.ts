@@ -14,6 +14,10 @@ type AsyncActionsObservables<TActions extends object> = {
 type AsyncActionsProxy<TActions extends object> = AsyncActions<TActions> &
   AsyncActionsObservables<TActions>;
 
+/**
+ * Create an AsyncActionsProxy that contains executable actions
+ * along with their respective Observables.
+ */
 export function asyncActions<
   TActions extends object
 >(): AsyncActionsProxy<TActions> {
