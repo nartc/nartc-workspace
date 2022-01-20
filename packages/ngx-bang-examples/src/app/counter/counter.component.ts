@@ -25,7 +25,7 @@ interface CounterState {
 @Component({
   selector: 'bang-counter',
   template: `
-    <ng-container *stateful="state; let snapshot">
+    <ng-container *stateful="state as snapshot">
       <button (click)="onDecrement()">-</button>
       <span>
         Double of {{ snapshot.count }} is {{ (derived | snap).double }}

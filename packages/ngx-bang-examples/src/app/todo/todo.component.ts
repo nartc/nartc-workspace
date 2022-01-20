@@ -16,12 +16,14 @@ import { TodoStore } from './todo.store';
 @Component({
   selector: 'bang-todo',
   template: `
-    <ng-container *stateful="todoStore.state; derived: todoStore.derive">
+    <ng-container
+      *stateful="todoStore.state as snapshot; derived: todoStore.derive"
+    >
       <section class="todoapp">
         <header class="header">
           <h1>todos</h1>
           <bang-todo-input
-            *ngIf="!todoStore.snapshot.loading; else loading"
+            *ngIf="!snapshot.loading; else loading"
             (addTodo)="todoStore.addTodo($event)"
           ></bang-todo-input>
         </header>
@@ -36,7 +38,7 @@ import { TodoStore } from './todo.store';
           *ngIf="todoStore.derived.hasTodo"
           [hasCompletedTodos]="todoStore.derived.hasCompleteTodo"
           [incompleteTodosCount]="todoStore.derived.incompleteTodosCount"
-          [currentFilter]="todoStore.snapshot.filter"
+          [currentFilter]="snapshot.filter"
           (filter)="todoStore.changeFilter($event)"
           (clearCompleted)="todoStore.clearCompleted()"
         ></bang-todo-footer>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { effect, snapshot, State } from 'ngx-bang';
+import { derive, effect, snapshot, state } from 'ngx-bang';
 import { asyncConnect } from 'ngx-bang/async';
 import { tap } from 'rxjs';
 import { Todo, TodoFilter } from './todo';
@@ -26,8 +26,10 @@ export interface TodoDerived {
 }
 
 @Injectable()
-export class TodoStore extends State<TodoState> {
-  derive = this.createDerive<TodoDerived>({
+export class TodoStore {
+  readonly state = state<TodoState>(initialState);
+
+  readonly derive = derive<TodoDerived>({
     filteredTodos: (get) => {
       const { filter, todos } = get(this.state);
       switch (filter) {
@@ -55,9 +57,7 @@ export class TodoStore extends State<TodoState> {
     private todoService: TodoService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    super(initialState);
-  }
+  ) {}
 
   init() {
     this.loadInitialFilter();
@@ -87,7 +87,7 @@ export class TodoStore extends State<TodoState> {
 
   private changeFilterEffect() {
     effect(this.state, ['filter'], () => {
-      switch (this.snapshot.filter) {
+      switch (snapshot(this.state).filter) {
         case 'SHOW_ACTIVE': {
           void this.router.navigate(['/todo', 'active']);
           break;
@@ -114,7 +114,8 @@ export class TodoStore extends State<TodoState> {
   }
 
   toggle(index: number) {
-    this.state.todos[index].completed = !this.snapshot.todos[index].completed;
+    this.state.todos[index].completed = !snapshot(this.state).todos[index]
+      .completed;
   }
 
   update(index: number, text: string) {
@@ -130,6 +131,8 @@ export class TodoStore extends State<TodoState> {
   }
 
   clearCompleted() {
-    this.state.todos = this.snapshot.todos.filter((todo) => !todo.completed);
+    this.state.todos = snapshot(this.state).todos.filter(
+      (todo) => !todo.completed
+    );
   }
 }

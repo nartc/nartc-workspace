@@ -30,7 +30,6 @@ export class StatefulDirective<TData extends object>
   implements OnDestroy, OnInit
 {
   static ngTemplateGuard_stateful: 'binding';
-  static ngTemplateGuard_statefulDerived: 'binding';
 
   @Input() set stateful(state: StateProxy<TData>) {
     this.state = state;
@@ -39,18 +38,10 @@ export class StatefulDirective<TData extends object>
 
   @Input() statefulDebounced = true;
 
-  @Input() set statefulDerived(derived: StateProxy | Array<StateProxy>) {
-    // this.deriveProxies = Array.isArray(derived) ? derived : [derived];
-    // this.deriveProxies.forEach((deriveProxy) =>
-    //   setInvalidate(deriveProxy, this.invalidate)
-    // );
-  }
-
   private state!: StateProxy<TData>;
 
   private viewRef?: EmbeddedViewRef<StatefulContext<TData>>;
 
-  // private deriveProxies: Array<StateProxy> = [];
   private invalidate = createInvalidate(this.cdr);
 
   static ngTemplateContextGuard<TData extends object = any>(
