@@ -1,3 +1,10 @@
+## [1.0.0-beta.15](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.14...ngx-bang-v1.0.0-beta.15) (2022-01-20)
+
+
+### Features
+
+* **bang:** remove State altogether ([7f3f5ac](https://github.com/nartc/nartc-workspace/commit/7f3f5ac28900ecd4e5f951e9049ee3cf2616cace))
+
 ## [1.0.0-beta.14](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.13...ngx-bang-v1.0.0-beta.14) (2022-01-19)
 
 
