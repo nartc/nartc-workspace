@@ -1,7 +1,6 @@
 export * from './lib/state';
 export * from './lib/derive';
 export * from './lib/stateful.directive';
-export * from './lib/snapshot.pipe';
 export {
   snapshot,
   effect,
