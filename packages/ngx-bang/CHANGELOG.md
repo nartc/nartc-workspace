@@ -1,3 +1,10 @@
+## [1.0.0-beta.17](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.16...ngx-bang-v1.0.0-beta.17) (2022-01-20)
+
+
+### Bug Fixes
+
+* **bang/async:** adjust asyncActions ([a8f62e5](https://github.com/nartc/nartc-workspace/commit/a8f62e5595942ae0144ee9b427bd6f2f2c372608))
+
 ## [1.0.0-beta.16](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.15...ngx-bang-v1.0.0-beta.16) (2022-01-20)
 
 
