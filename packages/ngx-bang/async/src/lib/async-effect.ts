@@ -1,44 +1,62 @@
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { getUnsubscribes, StateProxy } from 'ngx-bang';
-import { isObservable, Observable } from 'rxjs';
+import { CleanUpFn, getUnsubscribes, StateProxy } from 'ngx-bang';
+import { isObservable, Observable, tap } from 'rxjs';
 
 /**
  * Execute side-effect for StateProxy
  *
  * @template TData, TAsyncValue
  * @param {StateProxy<TData>} stateProxy - the `StateProxy` that this Effect is associated with
- * @param {Observable<TAsyncValue> | PromiseLike<TAsyncValue>} effect - the effect to run
- * @param {(value: TAsyncValue) => void} [successCallback] - after the effect runs and succeeds, optionally invoke this callback
- * @param {(error: any) => void} [errorCallback] - after the effect runs and errors, optionally invoke this callback
+ * @param {Observable<TAsyncValue> | PromiseLike<TAsyncValue>} effect - the cause that would cause the effect to run
+ * @param {(value: TAsyncValue) => CleanUpFn | void} effectFn - the effect to run
  *
  * @returns {void}
  */
 export function asyncEffect<TData extends object, TAsyncValue>(
   stateProxy: StateProxy<TData>,
   effect: Observable<TAsyncValue> | PromiseLike<TAsyncValue>,
-  successCallback?: (value: TAsyncValue) => void,
-  errorCallback?: (error: any) => void
+  effectFn: (value: TAsyncValue) => CleanUpFn | void
 ) {
+  const unsubscribes = getUnsubscribes(stateProxy);
+  let cleanUpFn: CleanUpFn | void;
   if (isObservable(effect)) {
-    getUnsubscribes(stateProxy).add(
-      effect.subscribe({
-        next: (value) => {
-          if (successCallback) successCallback(value);
-        },
-        error: (error) => {
-          if (errorCallback) errorCallback(error);
-        },
-      })
+    let hasFirstRun = false;
+    const teardown = () => {
+      if (cleanUpFn) {
+        cleanUpFn(true);
+      }
+    };
+
+    unsubscribes.add(
+      effect
+        .pipe(
+          tap({
+            next: (value) => {
+              if (cleanUpFn && hasFirstRun) {
+                cleanUpFn(false);
+              }
+
+              const cleanUpOrVoid = effectFn(value);
+              if (cleanUpOrVoid) {
+                cleanUpFn = cleanUpOrVoid;
+              }
+
+              if (!hasFirstRun) {
+                hasFirstRun = true;
+              }
+            },
+            unsubscribe: teardown,
+            finalize: teardown,
+          })
+        )
+        .subscribe()
     );
   } else {
-    const promise = (effect as Promise<TAsyncValue>).then((value) => {
-      if (successCallback) successCallback(value);
+    (effect as Promise<TAsyncValue>).then((value) => {
+      cleanUpFn = effectFn(value);
+      if (cleanUpFn) {
+        unsubscribes.add(cleanUpFn.bind({}, true));
+      }
     });
-
-    if (errorCallback) {
-      promise.catch((error) => {
-        errorCallback(error);
-      });
-    }
   }
 }
