@@ -1,3 +1,10 @@
+## [1.0.0-beta.19](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.18...ngx-bang-v1.0.0-beta.19) (2022-01-21)
+
+
+### Features
+
+* **bang:** expose destroy ([320cc25](https://github.com/nartc/nartc-workspace/commit/320cc25ca8986a42b0952e86c0c29588c54b79b2))
+
 ## [1.0.0-beta.18](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.17...ngx-bang-v1.0.0-beta.18) (2022-01-20)
 
 
