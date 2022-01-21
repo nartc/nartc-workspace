@@ -1,3 +1,10 @@
+## [1.0.0-beta.24](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.23...ngx-bang-v1.0.0-beta.24) (2022-01-21)
+
+
+### Bug Fixes
+
+* **bang:** relax Snapshot type ([42c574f](https://github.com/nartc/nartc-workspace/commit/42c574feff078b8f534a8ad7a88188d75824e0dd))
+
 ## [1.0.0-beta.23](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.22...ngx-bang-v1.0.0-beta.23) (2022-01-21)
 
 
