@@ -5,6 +5,7 @@ export {
   snapshot,
   effect,
   watch,
+  destroy,
   getUnsubscribes,
   createInvalidate,
 } from './lib/utils';
