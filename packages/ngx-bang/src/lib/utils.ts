@@ -12,6 +12,7 @@ import {
   WATCHERS,
 } from './symbols';
 import type {
+  AsRef,
   CleanUpFn,
   EffectFn,
   EffectFnWithCondition,
@@ -21,7 +22,6 @@ import type {
   Unsubscribe,
   Watcher,
 } from './types';
-import { AsRef } from './types';
 
 export let globalVersion = 1;
 
