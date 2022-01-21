@@ -1,3 +1,5 @@
+## [1.0.0-beta.25](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.25...ngx-bang-v1.0.0-beta.25) (2022-01-21)
+
 ## [1.0.0-beta.24](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.23...ngx-bang-v1.0.0-beta.24) (2022-01-21)
 
 
