@@ -1,3 +1,11 @@
+## [1.0.0-beta.20](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.19...ngx-bang-v1.0.0-beta.20) (2022-01-21)
+
+
+### Features
+
+* **bang/async:** adjust asyncEffect ([029e391](https://github.com/nartc/nartc-workspace/commit/029e391a25bb21d3acf1bd43cfd11d9d1a400c28))
+* **bang:** expose CleanUpFn ([41bfd7a](https://github.com/nartc/nartc-workspace/commit/41bfd7aeeb8d48a4436c6d1251a8fe40b80c9561))
+
 ## [1.0.0-beta.19](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.18...ngx-bang-v1.0.0-beta.19) (2022-01-21)
 
 
