@@ -15,15 +15,20 @@ import { isObservable, Observable, tap } from 'rxjs';
 export function asyncEffect<TData extends object, TAsyncValue>(
   stateProxy: StateProxy<TData>,
   effect: Observable<TAsyncValue> | PromiseLike<TAsyncValue>,
-  effectFn: (value: TAsyncValue) => CleanUpFn | void
+  effectFn: (
+    value: TAsyncValue
+  ) => ((prev: TAsyncValue | undefined, isUnsub: boolean) => void) | void
 ) {
   const unsubscribes = getUnsubscribes(stateProxy);
-  let cleanUpFn: CleanUpFn | void;
+  let cleanUpFn:
+    | ((prev: TAsyncValue | undefined, isUnsub: boolean) => void)
+    | void;
   if (isObservable(effect)) {
     let hasFirstRun = false;
+    let prevValue: TAsyncValue | undefined = undefined;
     const teardown = () => {
       if (cleanUpFn) {
-        cleanUpFn(true);
+        cleanUpFn(prevValue, true);
       }
     };
 
@@ -33,13 +38,15 @@ export function asyncEffect<TData extends object, TAsyncValue>(
           tap({
             next: (value) => {
               if (cleanUpFn && hasFirstRun) {
-                cleanUpFn(false);
+                cleanUpFn(prevValue, false);
               }
 
               const cleanUpOrVoid = effectFn(value);
               if (cleanUpOrVoid) {
                 cleanUpFn = cleanUpOrVoid;
               }
+
+              prevValue = value;
 
               if (!hasFirstRun) {
                 hasFirstRun = true;
@@ -55,7 +62,7 @@ export function asyncEffect<TData extends object, TAsyncValue>(
     (effect as Promise<TAsyncValue>).then((value) => {
       cleanUpFn = effectFn(value);
       if (cleanUpFn) {
-        unsubscribes.add(cleanUpFn.bind({}, true));
+        unsubscribes.add(cleanUpFn.bind({}, undefined, true));
       }
     });
   }
