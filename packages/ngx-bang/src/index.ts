@@ -9,4 +9,4 @@ export {
   getUnsubscribes,
   createInvalidate,
 } from './lib/utils';
-export { StateProxy } from './lib/types';
+export { StateProxy, CleanUpFn } from './lib/types';
