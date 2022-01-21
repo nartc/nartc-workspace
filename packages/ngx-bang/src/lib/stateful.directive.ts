@@ -9,7 +9,7 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import type { StateProxy } from './types';
+import type { Snapshot, StateProxy } from './types';
 import {
   createInvalidate,
   destroy,
@@ -19,8 +19,8 @@ import {
 } from './utils';
 
 export interface StatefulContext<TData extends object> {
-  $implicit: TData;
-  stateful: TData;
+  $implicit: Snapshot<TData>;
+  stateful: Snapshot<TData>;
 }
 
 @Directive({

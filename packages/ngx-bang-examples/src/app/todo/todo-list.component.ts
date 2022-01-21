@@ -26,7 +26,7 @@ import { Todo } from './todo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListComponent {
-  @Input() todos: Todo[] = [];
+  @Input() todos: ReadonlyArray<Todo> = [];
   @Output() toggle = new EventEmitter<{ index: number; id: number }>();
   @Output() update = new EventEmitter<{
     index: number;

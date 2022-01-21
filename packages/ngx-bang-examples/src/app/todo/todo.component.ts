@@ -16,9 +16,7 @@ import { TodoStore } from './todo.store';
 @Component({
   selector: 'bang-todo',
   template: `
-    <ng-container
-      *stateful="todoStore.state as snapshot; derived: todoStore.derive"
-    >
+    <ng-container *stateful="todoStore.state as snapshot">
       <section class="todoapp">
         <header class="header">
           <h1>todos</h1>

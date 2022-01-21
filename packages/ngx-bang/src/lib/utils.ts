@@ -18,6 +18,7 @@ import type {
   EffectFnWithCondition,
   Op,
   Path,
+  Snapshot,
   StateProxy,
   Unsubscribe,
   Watcher,
@@ -85,12 +86,16 @@ export const getInvalidate = (stateProxy: any): ((force?: boolean) => void) =>
   isObject(stateProxy) ? (stateProxy as any)[INVALIDATE] : undefined;
 export const getSnapshot = <TState extends object>(
   stateProxy: StateProxy<TState>
-): TState =>
-  stateProxy[SNAPSHOT as keyof typeof stateProxy] as unknown as TState;
+): Snapshot<TState> =>
+  stateProxy[
+    SNAPSHOT as keyof typeof stateProxy
+  ] as unknown as Snapshot<TState>;
 export const getPrevSnapshot = <TState extends object>(
   stateProxy: StateProxy<TState>
-): TState =>
-  stateProxy[PREV_SNAPSHOT as keyof typeof stateProxy] as unknown as TState;
+): Snapshot<TState> =>
+  stateProxy[
+    PREV_SNAPSHOT as keyof typeof stateProxy
+  ] as unknown as Snapshot<TState>;
 
 const internalWatch = <TState extends object>(
   stateProxy: StateProxy<TState>,
@@ -242,25 +247,11 @@ export function setInvalidate<TState extends object>(
 export function snapshot<TState extends object>(
   stateProxy: StateProxy<TState>,
   prev = false
-): TState {
+): Snapshot<TState> {
   if (prev) return getPrevSnapshot(stateProxy);
   return getSnapshot(stateProxy);
 }
 
-/**
- * Watch StateProxy changes
- *
- * @template TState
- * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
- * @param {(ops: Op[]) => void} callback - callback to invoke when state changes
- * @param {boolean} [debounced = true] - whether to invoke callback with debounced changes or not.
- * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
- */
-export function watch<TState extends object>(
-  stateProxy: StateProxy<TState>,
-  callback: (ops: Op[]) => void,
-  debounced?: boolean
-): VoidFunction;
 /**
  * Watch changes of properties in StateProxy
  *
@@ -277,6 +268,21 @@ export function watch<TState extends object, TKey extends keyof TState>(
   callback: (...values: TState[TKey][]) => void,
   debounced?: boolean
 ): VoidFunction;
+/**
+ * Watch StateProxy changes
+ *
+ * @template TState
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
+ * @param {(ops: Op[]) => void} callback - callback to invoke when state changes
+ * @param {boolean} [debounced = true] - whether to invoke callback with debounced changes or not.
+ * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
+ */
+export function watch<TState extends object>(
+  stateProxy: StateProxy<TState>,
+  callback: (ops: Op[]) => void,
+  debounced?: boolean
+): VoidFunction;
+
 export function watch<TState extends object, TKey extends keyof TState>(
   stateProxy: StateProxy<TState>,
   ...args:
@@ -305,20 +311,6 @@ export function watch<TState extends object, TKey extends keyof TState>(
 }
 
 /**
- * Execute effect on state changes
- *
- * @template TState
- * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
- * @param {EffectFn} effectFn - the effectFn to invoke on State changes
- * @param {boolean} [debounced = true]
- * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
- */
-export function effect<TState extends object>(
-  stateProxy: StateProxy<TState>,
-  effectFn: EffectFn,
-  debounced?: boolean
-): VoidFunction;
-/**
  * Execute effect on properties changes
  *
  * @template TState, TKey
@@ -331,6 +323,20 @@ export function effect<TState extends object>(
 export function effect<TState extends object, TKey extends keyof TState>(
   stateProxy: StateProxy<TState>,
   keys: TKey[],
+  effectFn: EffectFn,
+  debounced?: boolean
+): VoidFunction;
+/**
+ * Execute effect on state changes
+ *
+ * @template TState
+ * @param {StateProxy<TState>} stateProxy - The StateProxy to watch
+ * @param {EffectFn} effectFn - the effectFn to invoke on State changes
+ * @param {boolean} [debounced = true]
+ * @returns {VoidFunction} unsubscribe - Function to invoke to stop the watcher
+ */
+export function effect<TState extends object>(
+  stateProxy: StateProxy<TState>,
   effectFn: EffectFn,
   debounced?: boolean
 ): VoidFunction;
@@ -363,7 +369,10 @@ export function effect<TState extends object, TKey extends keyof TState>(
           return (
             notEqual(previousSnapshot, currentSnapshot) &&
             keys.some((key) =>
-              notEqual(previousSnapshot[key], currentSnapshot[key])
+              notEqual(
+                (previousSnapshot as any)[key],
+                (currentSnapshot as any)[key]
+              )
             )
           );
         },

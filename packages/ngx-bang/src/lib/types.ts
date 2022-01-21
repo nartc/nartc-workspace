@@ -1,4 +1,5 @@
 export type VoidFunction = () => void;
+export type AnyFunction = (...args: any[]) => any;
 
 export interface UnsubscribeObject {
   unsubscribe: VoidFunction;
@@ -14,12 +15,20 @@ export type EffectFnWithCondition = () => [
 ];
 
 export type StateProxy<TData extends object = object> = {
-  [TKey in keyof TData]: TData[TKey] extends AsRef
-    ? TData[TKey]
-    : TData[TKey] extends object
+  [TKey in keyof TData]: TData[TKey] extends object
     ? StateProxy<TData[TKey]>
     : TData[TKey];
 };
+
+export type Snapshot<TData> = TData extends AnyFunction
+  ? TData
+  : TData extends AsRef
+  ? Omit<TData, '$$bangRef'>
+  : TData extends object
+  ? {
+      readonly [TKey in keyof TData]: Snapshot<TData[TKey]>;
+    }
+  : TData;
 
 export type StateObject = object;
 export type Path = (string | symbol)[];
@@ -44,8 +53,8 @@ export type DeriveSubscriptions<TDerive extends object> = Map<
 export type DeriveFns<TDerived extends object> = {
   [TDeriveKey in keyof TDerived]: (
     get: DeriveGet,
-    snapshot: TDerived
+    snapshot: Snapshot<TDerived>
   ) => TDerived[TDeriveKey];
 };
 
-export const enum AsRef {}
+export type AsRef = { $$bangRef: true };
