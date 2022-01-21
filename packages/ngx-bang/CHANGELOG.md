@@ -1,3 +1,10 @@
+## [1.0.0-beta.22](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.21...ngx-bang-v1.0.0-beta.22) (2022-01-21)
+
+
+### Bug Fixes
+
+* **bang:** AsRef type should not be a StateProxy ([257837c](https://github.com/nartc/nartc-workspace/commit/257837ce130d75ef0456857023114ca65b1099a0))
+
 ## [1.0.0-beta.21](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.20...ngx-bang-v1.0.0-beta.21) (2022-01-21)
 
 
