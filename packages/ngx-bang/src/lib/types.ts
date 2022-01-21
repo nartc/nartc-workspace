@@ -25,9 +25,7 @@ export type Snapshot<TData> = TData extends AnyFunction
   : TData extends AsRef
   ? Omit<TData, '$$bangRef'>
   : TData extends object
-  ? {
-      readonly [TKey in keyof TData]: Snapshot<TData[TKey]>;
-    }
+  ? { [TKey in keyof TData]: Snapshot<TData[TKey]> }
   : TData;
 
 export type StateObject = object;
