@@ -5,11 +5,6 @@
   "scripts": {
     "postinstall": "ngcc --properties es2015 browser module main",
     "contributors:add": "all-contributors add",
-    "serve:bang": "nx serve ngx-bang-examples",
-    "build:bang": "nx build ngx-bang",
-    "release:bang": "dotenv release-it -- --config=.release-it.bang.json",
-    "publish:bang": "nx publish ngx-bang",
-    "publish:bang:beta": "nx publish-beta ngx-bang",
     "build:slice": "nx build ngrx-slice",
     "release:slice": "dotenv release-it -- --config=.release-it.slice.json",
     "test:slice": "nx test ngrx-slice",

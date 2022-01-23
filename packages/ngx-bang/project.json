@@ -20,6 +20,12 @@
       },
       "defaultConfiguration": "production"
     },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx nx serve ngx-bang-examples"
+      }
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/ngx-bang"],
@@ -37,6 +43,12 @@
           "packages/ngx-bang/async/**/*.ts",
           "packages/ngx-bang/async/**/*.html"
         ]
+      }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "dotenv release-it -- --config=./packages/ngx-bang/.release-it.json"
       }
     },
     "publish": {
