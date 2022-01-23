@@ -24,7 +24,7 @@
       },
       "infile": "packages/ngx-bang/CHANGELOG.md",
       "parserOpts": {
-        "headerPattern": "/^(\\w*)(?:\\((bang*)\\))?\\: (.*)$/"
+        "headerPattern": "^(\\w*)(?:\\((bang*)\\))?\\: (.*)$"
       }
     },
     "@release-it/bumper": {
