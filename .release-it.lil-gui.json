@@ -47,7 +47,7 @@
     "after:bump": [
       "git checkout -- package.json",
       "git checkout -- package-lock.json",
-      "npm run build:slice"
+      "npm run build:lil-gui"
     ]
   }
 }
