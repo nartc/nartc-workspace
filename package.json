@@ -4,14 +4,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "ngcc --properties es2015 browser module main",
-    "contributors:add": "all-contributors add",
-    "build:slice": "nx build ngrx-slice",
-    "release:slice": "dotenv release-it -- --config=.release-it.slice.json",
-    "test:slice": "nx test ngrx-slice",
-    "publish:slice": "nx publish ngrx-slice",
-    "build:lil-gui": "nx build ngx-lil-gui",
-    "release:lil-gui": "dotenv release-it -- --config=.release-it.lil-gui.json",
-    "publish:lil-gui": "nx publish ngx-lil-gui"
+    "contributors:add": "all-contributors add"
   },
   "private": true,
   "dependencies": {
