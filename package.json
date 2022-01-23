@@ -9,7 +9,11 @@
     "build:bang": "nx build ngx-bang",
     "release:bang": "dotenv release-it -- --config=.release-it.bang.json",
     "publish:bang": "nx publish ngx-bang",
-    "publish:bang:beta": "nx publish-beta ngx-bang"
+    "publish:bang:beta": "nx publish-beta ngx-bang",
+    "build:slice": "nx build ngrx-slice",
+    "release:slice": "dotenv release-it -- --config=.release-it.slice.json",
+    "test:slice": "nx test ngrx-slice",
+    "publish:slice": "nx publish ngrx-slice"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +25,8 @@
     "@angular/platform-browser": "~13.1.3",
     "@angular/platform-browser-dynamic": "~13.1.3",
     "@angular/router": "~13.1.3",
+    "@ngrx/store": "13.0.2",
+    "immer": "9.0.12",
     "proxy-compare": "2.0.2",
     "rxjs": "~7.4.0",
     "todomvc-app-css": "2.4.1",

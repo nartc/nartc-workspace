@@ -22,32 +22,32 @@
           }
         ]
       },
-      "infile": "packages/ngx-bang/CHANGELOG.md",
+      "infile": "packages/ngrx-slice/CHANGELOG.md",
       "parserOpts": {
-        "headerPattern": "/^(\\w*)(?:\\((bang*)\\))?\\: (.*)$/"
+        "headerPattern": "^(\\w*)(?:\\((slice*)\\))?\\: (.*)$"
       }
     },
     "@release-it/bumper": {
-      "in": "packages/ngx-bang/package.json",
-      "out": "packages/ngx-bang/package.json"
+      "in": "packages/ngrx-slice/package.json",
+      "out": "packages/ngrx-slice/package.json"
     }
   },
   "git": {
-    "commitMessage": "chore(repo): release ngx-bang ${version}",
-    "tagName": "ngx-bang-v${version}"
+    "commitMessage": "chore(repo): release ngrx-slice ${version}",
+    "tagName": "ngrx-slice-v${version}"
   },
   "npm": {
     "publish": false
   },
   "github": {
     "release": true,
-    "releaseName": "Release: ngx-bang ${version}"
+    "releaseName": "Release: ngrx-slice ${version}"
   },
   "hooks": {
     "after:bump": [
       "git checkout -- package.json",
       "git checkout -- package-lock.json",
-      "npm run build:bang"
+      "npm run build:slice"
     ]
   }
 }

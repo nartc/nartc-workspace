@@ -1,0 +1,51 @@
+{
+  "projectType": "library",
+  "root": "packages/ngrx-slice",
+  "sourceRoot": "packages/ngrx-slice/src",
+  "prefix": "nartc",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/ngrx-slice"],
+      "options": {
+        "project": "packages/ngrx-slice/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ngrx-slice/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/ngrx-slice/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ngrx-slice"],
+      "options": {
+        "jestConfig": "packages/ngrx-slice/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/ngrx-slice/src/**/*.ts",
+          "packages/ngrx-slice/src/**/*.html",
+          "packages/ngrx-slice/entity/**/*.ts",
+          "packages/ngrx-slice/entity/**/*.html"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "dist/packages/ngrx-slice"
+      }
+    }
+  },
+  "tags": ["scope:ngrx-slice", "type:lib"]
+}

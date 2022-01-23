@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "ngrx-slice": "packages/ngrx-slice",
     "ngx-bang": "packages/ngx-bang",
     "ngx-bang-examples": "packages/ngx-bang-examples"
   }
