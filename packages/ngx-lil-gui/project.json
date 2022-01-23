@@ -1,0 +1,49 @@
+{
+  "projectType": "library",
+  "root": "packages/ngx-lil-gui",
+  "sourceRoot": "packages/ngx-lil-gui/src",
+  "prefix": "nartc",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/ngx-lil-gui"],
+      "options": {
+        "project": "packages/ngx-lil-gui/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ngx-lil-gui/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/ngx-lil-gui/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ngx-lil-gui"],
+      "options": {
+        "jestConfig": "packages/ngx-lil-gui/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/ngx-lil-gui/src/**/*.ts",
+          "packages/ngx-lil-gui/src/**/*.html"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "dist/packages/ngx-lil-gui"
+      }
+    }
+  },
+  "tags": ["scope:ngx-lil-gui", "type:lib"]
+}

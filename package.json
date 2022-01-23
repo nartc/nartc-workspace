@@ -13,7 +13,10 @@
     "build:slice": "nx build ngrx-slice",
     "release:slice": "dotenv release-it -- --config=.release-it.slice.json",
     "test:slice": "nx test ngrx-slice",
-    "publish:slice": "nx publish ngrx-slice"
+    "publish:slice": "nx publish ngrx-slice",
+    "build:lil-gui": "nx build ngx-lil-gui",
+    "release:lil-gui": "dotenv release-it -- --config=.release-it.lil-gui.json",
+    "publish:lil-gui": "nx publish ngx-lil-gui"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +30,7 @@
     "@angular/router": "~13.1.3",
     "@ngrx/store": "13.0.2",
     "immer": "9.0.12",
+    "lil-gui": "0.16.0",
     "proxy-compare": "2.0.2",
     "rxjs": "~7.4.0",
     "todomvc-app-css": "2.4.1",

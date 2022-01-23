@@ -1,0 +1,31 @@
+{
+  "name": "ngx-lil-gui",
+  "version": "1.2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "lil-gui",
+    "angular"
+  ],
+  "author": {
+    "name": "Chau Tran",
+    "email": "nartc7789@gmail.com",
+    "url": "https://nartc.me"
+  },
+  "repository": {
+    "url": "https://github.com/nartc/nartc-workspace",
+    "directory": "packages/ngx-lil-gui",
+    "type": "git"
+  },
+  "license": "MIT",
+  "description": "Lil-GUI wrapper for Angular",
+  "peerDependencies": {
+    "@angular/common": "^13.1.0",
+    "@angular/core": "^13.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "lil-gui": "~0.16.0"
+  }
+}

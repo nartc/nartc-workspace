@@ -1,0 +1,53 @@
+{
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes"
+          },
+          {
+            "type": "cleanup",
+            "section": "Cleanup"
+          },
+          {
+            "type": "docs",
+            "section": "Documentations"
+          }
+        ]
+      },
+      "infile": "packages/ngx-lil-gui/CHANGELOG.md",
+      "parserOpts": {
+        "headerPattern": "^(\\w*)(?:\\((lil-gui*)\\))?\\: (.*)$"
+      }
+    },
+    "@release-it/bumper": {
+      "in": "packages/ngx-lil-gui/package.json",
+      "out": "packages/ngx-lil-gui/package.json"
+    }
+  },
+  "git": {
+    "commitMessage": "chore(repo): release ngx-lil-gui ${version}",
+    "tagName": "ngx-lil-gui-v${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release: ngx-lil-gui ${version}"
+  },
+  "hooks": {
+    "after:bump": [
+      "git checkout -- package.json",
+      "git checkout -- package-lock.json",
+      "npm run build:slice"
+    ]
+  }
+}

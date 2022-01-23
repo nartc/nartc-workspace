@@ -3,6 +3,7 @@
   "projects": {
     "ngrx-slice": "packages/ngrx-slice",
     "ngx-bang": "packages/ngx-bang",
-    "ngx-bang-examples": "packages/ngx-bang-examples"
+    "ngx-bang-examples": "packages/ngx-bang-examples",
+    "ngx-lil-gui": "packages/ngx-lil-gui"
   }
 }
