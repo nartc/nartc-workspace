@@ -37,6 +37,12 @@
         ]
       }
     },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "dotenv release-it -- --config=./packages/ngx-lil-gui/.release-it.json"
+      }
+    },
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
