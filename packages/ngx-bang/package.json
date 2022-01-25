@@ -1,6 +1,6 @@
 {
   "name": "ngx-bang",
-  "version": "1.0.0-beta.25",
+  "version": "1.0.0",
   "license": "MIT",
   "sideEffects": false,
   "publishConfig": {
