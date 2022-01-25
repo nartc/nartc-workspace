@@ -5,8 +5,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { derive, snapshot, state, StatefulDirectiveModule } from 'ngx-bang';
+import { derive, snapshot, state } from 'ngx-bang';
 import { asyncConnect } from 'ngx-bang/async';
+import { StatefulDirectiveModule } from 'ngx-bang/stateful';
 import { map, timer } from 'rxjs';
 
 interface CounterState {

@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { StatefulDirectiveModule } from 'ngx-bang';
+import { StatefulDirectiveModule } from 'ngx-bang/stateful';
 import { TodoFooterComponent } from './todo-footer.component';
 import { TodoInputComponent } from './todo-input.component';
 import { TodoItemComponent } from './todo-item.component';

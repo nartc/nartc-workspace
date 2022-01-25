@@ -1,4 +1,5 @@
-import { Observable, Subject } from 'rxjs';
+import type { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 type AsyncActions<TActions extends object> = {
   [TActionKey in keyof TActions]: (args: TActions[TActionKey]) => void;

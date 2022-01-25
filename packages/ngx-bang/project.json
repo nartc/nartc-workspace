@@ -41,7 +41,9 @@
           "packages/ngx-bang/src/**/*.ts",
           "packages/ngx-bang/src/**/*.html",
           "packages/ngx-bang/async/**/*.ts",
-          "packages/ngx-bang/async/**/*.html"
+          "packages/ngx-bang/async/**/*.html",
+          "packages/ngx-bang/stateful/**/*.ts",
+          "packages/ngx-bang/stateful/**/*.html"
         ]
       }
     },

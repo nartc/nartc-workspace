@@ -9,9 +9,16 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { destroy, snapshot, watch } from './state';
-import type { Snapshot } from './types';
-import { createInvalidate, setInvalidate } from './utils';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import type { Snapshot } from 'ngx-bang';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import {
+  createInvalidate,
+  destroy,
+  setInvalidate,
+  snapshot,
+  watch,
+} from 'ngx-bang';
 
 export interface StatefulContext<TData extends object> {
   $implicit: Snapshot<TData>;
