@@ -1,4 +1,5 @@
 export type VoidFunction = () => void;
+export type InvalidateFunction = (isAsync?: boolean) => void;
 export type AnyFunction = (...args: any[]) => any;
 
 export interface UnsubscribeObject {
@@ -14,12 +15,6 @@ export type EffectFnWithCondition = () => [
   (() => boolean)?
 ];
 
-export type StateProxy<TData extends object = object> = {
-  [TKey in keyof TData]: TData[TKey] extends object
-    ? StateProxy<TData[TKey]>
-    : TData[TKey];
-};
-
 export type Snapshot<TData> = TData extends AnyFunction
   ? TData
   : TData extends AsRef
@@ -28,7 +23,6 @@ export type Snapshot<TData> = TData extends AnyFunction
   ? { [TKey in keyof TData]: Snapshot<TData[TKey]> }
   : TData;
 
-export type StateObject = object;
 export type Path = (string | symbol)[];
 export type Op =
   | [op: 'set', path: Path, value: unknown, prevValue: unknown]
@@ -39,14 +33,26 @@ export type Op =
   | [op: 'rejected', path: Path, error: unknown];
 export type Watcher = (op: Op, nextVersion: number) => void;
 
-export type DeriveGet = <TData extends object>(
-  stateProxy: StateProxy<TData>
-) => TData;
+export type DeriveGet = <TData extends object>(stateProxy: TData) => TData;
 
-export type DeriveSubscriptions<TDerive extends object> = Map<
-  StateProxy<TDerive>,
-  [callbackMap: Map<keyof TDerive, VoidFunction>, unsubscribe: VoidFunction]
->;
+export type DeriveSubscription = {
+  s: object; // "s"ourceObject
+  d: object; // "d"erivedObject
+  k: string; // derived "k"ey
+  c: () => void; // "c"allback
+  n: boolean; // "n"otifyInSync
+  i: string[]; // "i"goringKeys
+  p?: Promise<void>; // "p"romise
+};
+
+export type DeriveSourceObjectEntry = [
+  subscriptions: Set<DeriveSubscription>,
+  unsubscribe: () => void,
+  pendingCount: number,
+  pendingCallbacks: Set<() => void>
+];
+
+export type DerivedObjectEntry = [subscriptions: Set<DeriveSubscription>];
 
 export type DeriveFns<TDerived extends object> = {
   [TDeriveKey in keyof TDerived]: (

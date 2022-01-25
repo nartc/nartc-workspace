@@ -9,14 +9,9 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import type { Snapshot, StateProxy } from './types';
-import {
-  createInvalidate,
-  destroy,
-  setInvalidate,
-  snapshot,
-  watch,
-} from './utils';
+import { destroy, snapshot, watch } from './state';
+import type { Snapshot } from './types';
+import { createInvalidate, setInvalidate } from './utils';
 
 export interface StatefulContext<TData extends object> {
   $implicit: Snapshot<TData>;
@@ -27,18 +22,18 @@ export interface StatefulContext<TData extends object> {
   selector: '[stateful]',
 })
 export class StatefulDirective<TData extends object>
-  implements OnDestroy, OnInit
+  implements OnInit, OnDestroy
 {
   static ngTemplateGuard_stateful: 'binding';
 
-  @Input() set stateful(state: StateProxy<TData>) {
+  @Input() set stateful(state: TData) {
     this.state = state;
     setInvalidate(this.state, this.invalidate);
   }
 
   @Input() statefulDebounced = true;
 
-  private state!: StateProxy<TData>;
+  private state!: TData;
 
   private viewRef?: EmbeddedViewRef<StatefulContext<TData>>;
 
