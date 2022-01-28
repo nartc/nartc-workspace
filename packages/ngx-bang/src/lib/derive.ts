@@ -4,6 +4,7 @@ import type {
   DeriveFns,
   DeriveSourceObjectEntry,
   DeriveSubscription,
+  Snapshot,
 } from './types';
 import {
   getDerives,
@@ -190,7 +191,7 @@ export function derive<TDerive extends object>(
         }
 
         dependencies.set(p, { v: getVersion(p) as number });
-        return getSnapshot(p);
+        return p as Snapshot<P>;
       };
       const value = fn(get, getSnapshot(derivedProxy));
       const subscribeToDependencies = () => {
