@@ -190,7 +190,7 @@ export function derive<TDerive extends object>(
         }
 
         dependencies.set(p, { v: getVersion(p) as number });
-        return p;
+        return getSnapshot(p);
       };
       const value = fn(get, getSnapshot(derivedProxy));
       const subscribeToDependencies = () => {

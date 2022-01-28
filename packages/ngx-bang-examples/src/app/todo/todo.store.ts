@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { derive, effect, Snapshot, snapshot, state } from 'ngx-bang';
+import { derive, effect, snapshot, state } from 'ngx-bang';
 import { asyncConnect } from 'ngx-bang/async';
 import { tap } from 'rxjs';
 import { Todo, TodoFilter } from './todo';
@@ -27,7 +27,7 @@ export interface TodoDerived {
 
 @Injectable()
 export class TodoStore {
-  readonly state = state<TodoState>(initialState);
+  readonly state = state(initialState);
 
   readonly derive = derive<TodoDerived>({
     filteredTodos: (get) => {
@@ -49,7 +49,7 @@ export class TodoStore {
       get(this.state).todos.filter((t) => !t.completed).length,
   });
 
-  get derived(): Snapshot<TodoDerived> {
+  get derived() {
     return snapshot(this.derive);
   }
 

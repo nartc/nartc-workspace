@@ -33,7 +33,9 @@ export type Op =
   | [op: 'rejected', path: Path, error: unknown];
 export type Watcher = (op: Op, nextVersion: number) => void;
 
-export type DeriveGet = <TData extends object>(stateProxy: TData) => TData;
+export type DeriveGet = <TData extends object>(
+  stateProxy: TData
+) => Snapshot<TData>;
 
 export type DeriveSubscription = {
   s: object; // "s"ourceObject
