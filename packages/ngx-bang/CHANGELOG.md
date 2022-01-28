@@ -1,3 +1,10 @@
+### [1.1.1](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.1.0...ngx-bang-v1.1.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* **bang:** return state proxy to derive ([1c9f4a7](https://github.com/nartc/nartc-workspace/commit/1c9f4a7cff331351b07ac898adb84df13135e759))
+
 ## [1.1.0](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0...ngx-bang-v1.1.0) (2022-01-28)
 
 
