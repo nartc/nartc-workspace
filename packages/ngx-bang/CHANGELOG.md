@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0...ngx-bang-v1.1.0) (2022-01-28)
+
+
+### Features
+
+* **bang:** update DeriveGet return type to Snapshot<TData> ([d7ad8da](https://github.com/nartc/nartc-workspace/commit/d7ad8daa6a7e3e13c05a57ff61fb5354f973c68b))
+
 ## [1.0.0](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.0.0-beta.25...ngx-bang-v1.0.0) (2022-01-25)
 
 ### Features
