@@ -1,14 +1,21 @@
-## 6.1.0 (2022-01-23)
-
+## [6.2.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.1.0...ngrx-slice-v6.2.0) (2022-02-23)
 
 ### Features
 
-* **slice:** add ngrx-slice to workspace ([cf2c49a](https://github.com/nartc/nartc-workspace/commit/cf2c49ac228f156f636020ec4a71c29a67755e9d))
+* **slice:** update
+  peerDeps ([d21f159](https://github.com/nartc/nartc-workspace/commit/d21f1590af1e1df45cb1f75a2ce5c6ac1f7e5327))
 
+## 6.1.0 (2022-01-23)
+
+### Features
+
+* **slice:** add ngrx-slice to
+  workspace ([cf2c49a](https://github.com/nartc/nartc-workspace/commit/cf2c49ac228f156f636020ec4a71c29a67755e9d))
 
 ### Documentations
 
-* add [@nartc](https://github.com/nartc) as a contributor ([a269bcf](https://github.com/nartc/nartc-workspace/commit/a269bcf96a43fc98b442b1148c1781a6ad9167a4))
+* add [@nartc](https://github.com/nartc) as a
+  contributor ([a269bcf](https://github.com/nartc/nartc-workspace/commit/a269bcf96a43fc98b442b1148c1781a6ad9167a4))
 
 ## [6.0.0](https://github.com/nartc/ngrx-slice/compare/5.0.0...6.0.0) (2021-12-19)
 

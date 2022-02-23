@@ -1,6 +1,6 @@
 {
   "name": "ngrx-slice",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "license": "MIT",
   "description": "createSlice plugin for NgRX",
   "keywords": [
