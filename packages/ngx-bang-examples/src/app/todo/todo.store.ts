@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { derive, effect, snapshot, state } from 'ngx-bang';
-import { asyncConnect } from 'ngx-bang/async';
-import { tap } from 'rxjs';
 import { Todo, TodoFilter } from './todo';
 import { TodoService } from './todo.service';
 
@@ -59,9 +57,9 @@ export class TodoStore {
     private route: ActivatedRoute
   ) {}
 
-  init() {
+  async init() {
     this.loadInitialFilter();
-    this.loadTodo();
+    await this.loadTodo();
     this.changeFilterEffect();
   }
 
@@ -76,13 +74,10 @@ export class TodoStore {
     );
   }
 
-  private loadTodo() {
+  private async loadTodo() {
     this.state.loading = true;
-    asyncConnect(
-      this.state,
-      'todos',
-      this.todoService.getTodos().pipe(tap(() => (this.state.loading = false)))
-    );
+    this.state.todos = await this.todoService.getTodos();
+    this.state.loading = false;
   }
 
   private changeFilterEffect() {

@@ -5,10 +5,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { derive, snapshot, state } from 'ngx-bang';
-import { asyncConnect } from 'ngx-bang/async';
+import { derive, effect, snapshot, state } from 'ngx-bang';
 import { StatefulDirectiveModule } from 'ngx-bang/stateful';
-import { map, timer } from 'rxjs';
+import { timer } from 'rxjs';
 
 interface CounterState {
   count: number;
@@ -68,10 +67,14 @@ export class CounterComponent implements OnInit {
   }
 
   ngOnInit() {
-    asyncConnect(this.state, 'secondsPassed', [
-      timer(0, 1000).pipe(map((tick) => tick + 1)),
-      ['count'],
-    ]);
+    effect(this.state, ['count'], () => {
+      const sub = timer(0, 1000).subscribe((tick) => {
+        this.state.secondsPassed = tick + 1;
+      });
+      return () => {
+        sub.unsubscribe();
+      };
+    });
   }
 
   onIncrement() {

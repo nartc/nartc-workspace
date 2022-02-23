@@ -57,8 +57,8 @@ import { TodoStore } from './todo.store';
 export class TodoComponent implements OnInit {
   constructor(public todoStore: TodoStore) {}
 
-  ngOnInit() {
-    this.todoStore.init();
+  async ngOnInit() {
+    await this.todoStore.init();
   }
 }
 
