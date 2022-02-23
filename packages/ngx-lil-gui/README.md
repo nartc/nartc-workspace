@@ -2,7 +2,7 @@
 
 ## Installation
 
-    npm install ngx-lil-gui lil-gui
+    npm install ngx-lil-gui
 
 ## Usage
 
