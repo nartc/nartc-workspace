@@ -17,7 +17,7 @@
     "@angular/platform-browser-dynamic": "13.2.3",
     "@angular/router": "13.2.3",
     "@ngrx/store": "13.0.2",
-    "immer": "9.0.12",
+    "immer": "~9.0.12",
     "lil-gui": "0.16.1",
     "proxy-compare": "2.0.2",
     "rxjs": "~7.5.4",
