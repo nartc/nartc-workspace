@@ -1,3 +1,13 @@
+
+
+## [2.1.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.0.0...ngx-lil-gui-v2.1.0) (2022-05-15)
+
+
+### Documentations
+
+* **lil-gui:** remove lil-gui from installation guide ([a745626](https://github.com/nartc/nartc-workspace/commit/a74562648cf89727c1236a55086f92a8916e418d))
+* use readonly ([fcb9d52](https://github.com/nartc/nartc-workspace/commit/fcb9d5258c8e3288cebcf883a4105445c79c56df))
+
 ## 2.0.0 (2022-01-23)
 
 ### ⚠ BREAKING CHANGES
@@ -51,4 +61,3 @@
 * add [@nartc](https://github.com/nartc) as a
   contributor ([cc7780c](https://github.com/nartc/ngx-lil-gui/commit/cc7780c097cfa2bbfa84a8ea4362e309fb29ad5f))
 * readme ([ab35fa4](https://github.com/nartc/ngx-lil-gui/commit/ab35fa47e374668916aa8c38303abb80f1bd97db))
-
