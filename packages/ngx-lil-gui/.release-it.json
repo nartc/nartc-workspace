@@ -29,7 +29,7 @@
     },
     "@release-it/bumper": {
       "in": "packages/ngx-lil-gui/package.json",
-      "out": "packages/ngx-lil-gui/package.json"
+      "out": ["packages/ngx-lil-gui/package.json", "dist/packages/ngx-lil-gui/package.json"]
     }
   },
   "git": {
@@ -44,10 +44,7 @@
     "releaseName": "Release: ngx-lil-gui ${version}"
   },
   "hooks": {
-    "after:bump": [
-      "git checkout -- package.json",
-      "git checkout -- package-lock.json",
-      "npx nx build ngx-lil-gui"
-    ]
+    "before:bump": "npx nx build ngx-lil-gui",
+    "after:bump": "git checkout -- package.json"
   }
 }
