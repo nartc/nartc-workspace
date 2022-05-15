@@ -75,14 +75,14 @@ export type PayloadAction<Payload = any> = {
 } & Action;
 
 export interface CaseReducer<
-  SliceState = unknown,
+  SliceState = any,
   CaseAction extends PayloadAction = any
 > {
   (state: Draft<SliceState>, action: CaseAction): void;
 }
 
 export interface AsyncCaseReducer<
-  SliceState = unknown,
+  SliceState = any,
   CaseAction extends PayloadAction = any
 > {
   success: CaseReducer<SliceState, CaseAction>;
@@ -92,7 +92,7 @@ export interface AsyncCaseReducer<
   cancel?: CaseReducer<SliceState, CaseAction>;
 }
 
-export interface SliceCaseReducers<SliceState = unknown> {
+export interface SliceCaseReducers<SliceState = any> {
   [K: string]: CaseReducer<SliceState> | AsyncCaseReducer<SliceState>;
 }
 
@@ -120,7 +120,7 @@ export type SliceSelector<
 
 export type NestedSelectors<SliceState extends object> = SliceState extends
   | Primitive
-  | unknown[]
+  | any[]
   | Date
   ? Record<string, never>
   : {
