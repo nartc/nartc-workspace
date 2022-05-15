@@ -29,7 +29,7 @@
     },
     "@release-it/bumper": {
       "in": "packages/ngrx-slice/package.json",
-      "out": "packages/ngrx-slice/package.json"
+      "out": ["packages/ngrx-slice/package.json", "dist/packages/ngrx-slice/package.json"]
     }
   },
   "git": {
@@ -44,10 +44,7 @@
     "releaseName": "Release: ngrx-slice ${version}"
   },
   "hooks": {
-    "after:bump": [
-      "git checkout -- package.json",
-      "git checkout -- package-lock.json",
-      "npx nx build ngrx-slice"
-    ]
+    "before:bump": "npx nx build ngrx-slice",
+    "after:bump": "git checkout -- package.json"
   }
 }
