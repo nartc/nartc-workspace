@@ -1,3 +1,17 @@
+
+
+### [6.2.1](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.2.0...ngrx-slice-v6.2.1) (2022-05-15)
+
+
+### Bug Fixes
+
+* **slice:** use any instead of unknown ([63e0977](https://github.com/nartc/nartc-workspace/commit/63e09779e1d87fb39305f0c32117ad3c575058b6))
+
+
+### Documentations
+
+* use readonly ([fcb9d52](https://github.com/nartc/nartc-workspace/commit/fcb9d5258c8e3288cebcf883a4105445c79c56df))
+
 ## [6.2.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.1.0...ngrx-slice-v6.2.0) (2022-02-23)
 
 ### Features
@@ -292,4 +306,3 @@ noopReducer<CounterState, { multiplier: number }>();
 
 * remove NonOptional
   type ([9a9b191](https://github.com/nartc/ngrx-slice/commit/9a9b191cd575a22a49d2cdaf3c531e65b44edbae))
-
