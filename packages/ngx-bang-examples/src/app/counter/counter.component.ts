@@ -51,14 +51,14 @@ interface CounterState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterComponent implements OnInit {
-  state = state<CounterState>({
+  readonly state = state<CounterState>({
     count: 0,
     incrementCount: 0,
     decrementCount: 0,
     secondsPassed: 0,
   });
 
-  derived = derive({
+  readonly derived = derive({
     double: (get) => get(this.state).count * 2,
   });
 
