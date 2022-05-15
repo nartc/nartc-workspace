@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/ngrx-slice",
   "sourceRoot": "packages/ngrx-slice/src",
   "prefix": "nartc",
   "targets": {
@@ -24,7 +23,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/ngrx-slice"],
       "options": {
-        "jestConfig": "packages/ngrx-slice/jest.config.js",
+        "jestConfig": "packages/ngrx-slice/jest.config.ts",
         "passWithNoTests": true
       }
     },

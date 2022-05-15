@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'ngrx-slice',
+/* eslint-disable */
+export default {
+  displayName: 'ngx-lil-gui',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/packages/ngrx-slice',
+  coverageDirectory: '../../coverage/packages/ngx-lil-gui',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

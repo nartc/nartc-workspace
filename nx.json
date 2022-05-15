@@ -1,5 +1,5 @@
 {
-  "extends": "@nrwl/workspace/presets/core.json",
+  "extends": "nx/presets/core.json",
   "npmScope": "nartc",
   "affected": {
     "defaultBase": "main"
@@ -9,14 +9,10 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "NjA3NmYxZjAtZGRjOC00NjQwLWI3YzItOTMyMDgzODkxN2FkfHJlYWQtd3JpdGU="
       }
     }
   },

@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/ngx-lil-gui",
   "sourceRoot": "packages/ngx-lil-gui/src",
   "prefix": "nartc",
   "targets": {
@@ -24,7 +23,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/ngx-lil-gui"],
       "options": {
-        "jestConfig": "packages/ngx-lil-gui/jest.config.js",
+        "jestConfig": "packages/ngx-lil-gui/jest.config.ts",
         "passWithNoTests": true
       }
     },

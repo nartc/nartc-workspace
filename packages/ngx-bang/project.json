@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/ngx-bang",
   "sourceRoot": "packages/ngx-bang/src",
   "prefix": "nartc",
   "targets": {
@@ -30,7 +29,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/ngx-bang"],
       "options": {
-        "jestConfig": "packages/ngx-bang/jest.config.js",
+        "jestConfig": "packages/ngx-bang/jest.config.ts",
         "passWithNoTests": true
       }
     },

@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "packages/ngx-bang-examples",
   "sourceRoot": "packages/ngx-bang-examples/src",
   "prefix": "bang",
   "targets": {
