@@ -1,3 +1,13 @@
+
+
+## [1.2.0](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.1.1...ngx-bang-v1.2.0) (2022-05-15)
+
+
+### Documentations
+
+* **bang:** play around with different API ([cb66ab0](https://github.com/nartc/nartc-workspace/commit/cb66ab0720077b3dcda5712a7b1f73de95c800dc))
+* use readonly ([fcb9d52](https://github.com/nartc/nartc-workspace/commit/fcb9d5258c8e3288cebcf883a4105445c79c56df))
+
 ### [1.1.1](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.1.0...ngx-bang-v1.1.1) (2022-01-28)
 
 
@@ -237,4 +247,3 @@
   README ([da28955](https://github.com/nartc/nartc-workspace/commit/da2895569526d94fe4b1bf2b3aa6085e8a0f0505))
 * **bang:** add
   todo ([f31303d](https://github.com/nartc/nartc-workspace/commit/f31303d1aff3114a8420e6aeec9d36bc6dfa49c2))
-
