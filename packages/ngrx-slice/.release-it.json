@@ -44,7 +44,7 @@
     "releaseName": "Release: ngrx-slice ${version}"
   },
   "hooks": {
-    "before:bump": "npx nx build ngrx-slice",
+    "before:bump": "pnpm exec nx build ngrx-slice",
     "after:bump": "git checkout -- package.json"
   }
 }

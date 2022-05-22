@@ -44,7 +44,7 @@
     "releaseName": "Release: ngx-bang ${version}"
   },
   "hooks": {
-    "before:bump": "npx nx build ngx-bang",
+    "before:bump": "pnpm exec nx build ngx-bang",
     "after:bump": "git checkout -- package.json"
   }
 }
