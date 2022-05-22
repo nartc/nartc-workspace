@@ -34,13 +34,13 @@
     "@angular/cli": "13.3.5",
     "@angular/compiler-cli": "13.3.8",
     "@angular/language-service": "13.3.8",
-    "@nrwl/angular": "14.1.5",
-    "@nrwl/cli": "14.1.5",
-    "@nrwl/eslint-plugin-nx": "14.1.5",
-    "@nrwl/jest": "14.1.5",
-    "@nrwl/linter": "14.1.5",
-    "@nrwl/nx-cloud": "14.0.3",
-    "@nrwl/workspace": "14.1.5",
+    "@nrwl/angular": "14.1.7",
+    "@nrwl/cli": "14.1.7",
+    "@nrwl/eslint-plugin-nx": "14.1.7",
+    "@nrwl/jest": "14.1.7",
+    "@nrwl/linter": "14.1.7",
+    "@nrwl/nx-cloud": "14.0.5",
+    "@nrwl/workspace": "14.1.7",
     "@release-it/bumper": "4.0.0",
     "@release-it/conventional-changelog": "5.0.0",
     "@types/jest": "27.5.1",
@@ -65,7 +65,7 @@
     "release-it": "15.0.0",
     "ts-jest": "27.1.4",
     "typescript": "4.6.4",
-    "nx": "14.1.5"
+    "nx": "14.1.7"
   },
   "config": {
     "commitizen": {
@@ -73,3 +73,4 @@
     }
   }
 }
+
