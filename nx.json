@@ -31,7 +31,19 @@
       "style": "css"
     }
   },
-  "defaultProject": "ngx-bang",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "prod": ["!{projectRoot}/**/*.spec.ts"]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": ["prod", "^prod"],
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "inputs": ["default", "^prod"]
+    }
+  },
   "pluginsConfig": {
     "@nrwl/js": {
       "analyzeSourceFiles": true
