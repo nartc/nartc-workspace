@@ -31,5 +31,11 @@
       "style": "css"
     }
   },
-  "defaultProject": "ngx-bang"
+  "defaultProject": "ngx-bang",
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }
