@@ -3,14 +3,13 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Inject,
+  inject,
+  InjectFlags,
   Input,
   NgZone,
   OnDestroy,
   OnInit,
-  Optional,
   Output,
-  SkipSelf,
 } from '@angular/core';
 import GUI, { ColorController, Controller } from 'lil-gui';
 import type {
@@ -33,6 +32,7 @@ import type {
   `,
   template: ` <ng-content></ng-content> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class NgxLilGui implements OnInit, OnDestroy {
   @Input() zoneless = false;
@@ -54,19 +54,20 @@ export class NgxLilGui implements OnInit, OnDestroy {
 
   #gui!: GUI;
 
-  constructor(
-    @SkipSelf() private hostElement: ElementRef<HTMLElement>,
-    @Optional() @SkipSelf() @Inject(NgxLilGui) private parentGUI: NgxLilGui,
-    private ngZone: NgZone
-  ) {}
+  #hostElement = inject(
+    ElementRef,
+    InjectFlags.SkipSelf
+  ) as ElementRef<HTMLElement>;
+  #parentGUI = inject(NgxLilGui, InjectFlags.Optional | InjectFlags.SkipSelf);
+  #ngZone = inject(NgZone);
 
   ngOnInit() {
+    this.zoneless = this.#parentGUI?.zoneless ?? this.zoneless;
     this.run(() => {
-      this.zoneless = this.parentGUI?.zoneless ?? this.zoneless;
       let container: HTMLElement | undefined =
         this.container instanceof HTMLElement
           ? this.container
-          : this.hostElement.nativeElement;
+          : this.#hostElement.nativeElement;
 
       if (typeof this.container === 'boolean') {
         container = undefined;
@@ -79,7 +80,7 @@ export class NgxLilGui implements OnInit, OnDestroy {
         injectStyles: this.injectStyles,
         width: this.width,
         title: this.title,
-        parent: this.self ? undefined : this.parentGUI?.gui || undefined,
+        parent: this.self ? undefined : this.#parentGUI?.gui || undefined,
       });
 
       this.#setupEvents();
@@ -128,7 +129,7 @@ export class NgxLilGui implements OnInit, OnDestroy {
 
   run<TReturn = void>(fn: () => TReturn): TReturn {
     if (this.zoneless) {
-      return this.ngZone.runOutsideAngular(() => {
+      return this.#ngZone.runOutsideAngular(() => {
         return fn();
       });
     }

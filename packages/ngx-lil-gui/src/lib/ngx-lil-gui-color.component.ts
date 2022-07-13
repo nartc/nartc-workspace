@@ -2,12 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  inject,
+  InjectFlags,
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   Output,
-  SkipSelf,
 } from '@angular/core';
 import { ColorController } from 'lil-gui';
 import { NgxLilGui } from './ngx-lil-gui.component';
@@ -21,6 +21,7 @@ import type {
   selector: 'ngx-lil-gui-color[property]',
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class NgxLilGuiColor implements OnInit, OnDestroy {
   @Input() property!: string;
@@ -37,20 +38,20 @@ export class NgxLilGuiColor implements OnInit, OnDestroy {
     return this.#colorController;
   }
 
-  constructor(@Optional() @SkipSelf() private parentGui: NgxLilGui) {
-    if (!parentGui) {
-      throw new Error('ngx-lil-gui-color must be used within a ngx-lil-gui');
-    }
-  }
+  #parentGui = inject(NgxLilGui, InjectFlags.Optional | InjectFlags.SkipSelf);
 
   ngOnInit() {
+    if (!this.#parentGui) {
+      throw new Error('ngx-lil-gui-color must be used within a ngx-lil-gui');
+    }
+
     this.preAdd.emit();
 
-    this.#colorController = this.parentGui.addColor(
+    this.#colorController = this.#parentGui.addColor(
       this.property,
       this.colorConfig
     );
-    this.parentGui.run(() => {
+    this.#parentGui.run(() => {
       if (this.colorController) {
         this.colorController.updateDisplay();
 

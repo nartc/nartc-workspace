@@ -2,12 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  inject,
+  InjectFlags,
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   Output,
-  SkipSelf,
 } from '@angular/core';
 import { Controller } from 'lil-gui';
 import { NgxLilGui } from './ngx-lil-gui.component';
@@ -21,6 +21,7 @@ import type {
   selector: 'ngx-lil-gui-controller[property]',
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class NgxLilGuiController implements OnInit, OnDestroy {
   @Input() property!: string;
@@ -33,22 +34,22 @@ export class NgxLilGuiController implements OnInit, OnDestroy {
 
   #controller?: Controller;
 
-  constructor(@Optional() @SkipSelf() private parentGui: NgxLilGui) {
-    if (!parentGui) {
-      throw new Error(
-        'ngx-lil-gui-controller must be used within a ngx-lil-gui.'
-      );
-    }
-  }
+  #parentGui = inject(NgxLilGui, InjectFlags.Optional | InjectFlags.SkipSelf);
 
   ngOnInit() {
+    if (!this.#parentGui) {
+      throw new Error(
+        'ngx-lil-gui-controller must be used within a ngx-lil-gui'
+      );
+    }
+
     this.preAdd.emit();
 
-    this.#controller = this.parentGui.addController(
+    this.#controller = this.#parentGui.addController(
       this.property,
       this.controllerConfig
     );
-    this.parentGui.run(() => {
+    this.#parentGui.run(() => {
       if (this.controller) {
         this.controller.updateDisplay();
 
