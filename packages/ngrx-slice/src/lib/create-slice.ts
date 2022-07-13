@@ -105,12 +105,14 @@ export function createNamespacedSlice<
     sliceActionNameGetter,
   });
 
+  const classifiedName = classify(name);
+
   return {
-    [`${classify(name)}Feature`]: {
+    [`${classifiedName}Feature`]: {
       name: sliceName,
       reducer,
     },
-    [`${classify(name)}Actions`]: actions,
-    [`${classify(name)}Selectors`]: selectors,
+    [`${classifiedName}Actions`]: actions,
+    [`${classifiedName}Selectors`]: selectors,
   } as NamespacedSlice<SliceState, SliceName, CaseReducers>;
 }
