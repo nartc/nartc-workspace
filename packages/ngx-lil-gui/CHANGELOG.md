@@ -1,5 +1,12 @@
 
 
+## [2.2.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.1.0...ngx-lil-gui-v2.2.0) (2022-07-13)
+
+
+### Features
+
+* **lil-gui:** expose standalone components ([7412679](https://github.com/nartc/nartc-workspace/commit/7412679697ab88310ef2c2ee0bafa39714fd7461))
+
 ## [2.1.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.0.0...ngx-lil-gui-v2.1.0) (2022-05-15)
 
 
