@@ -1,5 +1,17 @@
 
 
+## [6.3.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.2.1...ngrx-slice-v6.3.0) (2022-07-13)
+
+
+### Features
+
+* **slice:** bump peer dep to include ng 14 and ngrx 14 ([188175c](https://github.com/nartc/nartc-workspace/commit/188175c48bf95f8587d7539954dba0da229d9d68))
+
+
+### Bug Fixes
+
+* **slice:** calculate classified name once for namespaced slice ([950ec1d](https://github.com/nartc/nartc-workspace/commit/950ec1d56303ea8c3617774fe4a7b59f9f8a7323))
+
 ### [6.2.1](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.2.0...ngrx-slice-v6.2.1) (2022-05-15)
 
 
