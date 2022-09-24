@@ -12,19 +12,20 @@ export function createSliceActions<
 >(
   featureName: SliceName,
   sliceActionNameGetter: SliceActionNameGetter,
-  reducers: CaseReducers
+  reducers: CaseReducers,
+  reducersToActions?: { [K in keyof CaseReducers | 'noop']?: string },
 ): SliceActions<SliceState, CaseReducers> {
   const actions: Record<string, ActionCreator | Record<string, ActionCreator>> =
     {};
 
   actions['noop'] = createAction(
-    sliceActionNameGetter(featureName, 'noop effect'),
+    reducersToActions?.['noop'] || sliceActionNameGetter(featureName, 'noop effect'),
     props<Record<string, unknown>>()
   );
 
   for (const [reducerKey, reducerValue] of Object.entries(reducers)) {
     const typeOfReducer = typeof reducerValue;
-    const sliceActionName = sliceActionNameGetter(featureName, reducerKey);
+    const sliceActionName = reducersToActions?.[reducerKey] || sliceActionNameGetter(featureName, reducerKey);
 
     if (typeOfReducer === 'function') {
       actions[reducerKey] = createAction(

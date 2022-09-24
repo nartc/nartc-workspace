@@ -39,6 +39,7 @@ export function createSlice<
   initialState,
   reducers,
   extraReducers,
+  reducersToActions,
   sliceActionNameGetter = defaultSliceActionNameGetter,
 }: SliceOptions<SliceName, SliceState, CaseReducers>): Slice<
   SliceState,
@@ -55,7 +56,8 @@ export function createSlice<
   const actions = createSliceActions<SliceState, SliceName, CaseReducers>(
     name,
     sliceActionNameGetter,
-    reducers
+    reducers,
+    reducersToActions,
   );
 
   const reducer = createSliceReducer<SliceState, SliceName, CaseReducers>(

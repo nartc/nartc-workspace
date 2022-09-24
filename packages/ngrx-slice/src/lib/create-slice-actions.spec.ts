@@ -78,4 +78,27 @@ describe(createSliceActions.name, () => {
       }
     });
   });
+
+  it('should return actions with correct name if actionsMap is provided', () => {
+    const actions = createSliceActions(
+      'feature',
+      getter,
+      {
+        foo: (state) => state,
+        bar: state => state
+      },
+      { foo: '[Foo Action] The Foo', noop: '[Noop Action] The Noop' }
+    );
+
+    expect(Object.keys(actions).length).toEqual(3);
+    expect(actions.foo()).toEqual({
+      type: '[Foo Action] The Foo',
+    });
+    expect(actions.noop()).toEqual({
+      type: '[Noop Action] The Noop',
+    });
+    expect(actions.bar()).toEqual({
+      type: 'feature/bar',
+    });
+  });
 });

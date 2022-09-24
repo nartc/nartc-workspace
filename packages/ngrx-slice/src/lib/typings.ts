@@ -99,11 +99,12 @@ export interface SliceCaseReducers<SliceState = any> {
 export interface SliceOptions<
   SliceName extends string,
   SliceState,
-  CaseReducers extends SliceCaseReducers<SliceState>
+  CaseReducers extends SliceCaseReducers<SliceState> = SliceCaseReducers<SliceState>
 > {
   name: SliceName;
   initialState: SliceState;
   reducers: CaseReducers;
+  reducersToActions?: {[K in keyof CaseReducers | 'noop']?: string};
   extraReducers?: Array<ReducerTypes<SliceState, readonly ActionCreator[]>>;
   sliceActionNameGetter?: SliceActionNameGetter;
 }
