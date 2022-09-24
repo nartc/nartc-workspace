@@ -1,5 +1,12 @@
 
 
+## [6.4.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.3.0...ngrx-slice-v6.4.0) (2022-09-24)
+
+
+### Features
+
+* **slice:** add reducers to actions map option ([6120350](https://github.com/nartc/nartc-workspace/commit/6120350c03afa651cfcb9f7e0df5b6c1a12b4b51))
+
 ## [6.3.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.2.1...ngrx-slice-v6.3.0) (2022-07-13)
 
 
