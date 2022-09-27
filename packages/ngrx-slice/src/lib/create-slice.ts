@@ -1,4 +1,4 @@
-import { createFeatureSelector } from '@ngrx/store';
+import {createFeatureSelector, ActionCreator} from '@ngrx/store';
 import type { Draft } from 'immer';
 import { createSliceActions } from './create-slice-actions';
 import { createSliceReducer } from './create-slice-reducer';
@@ -57,12 +57,11 @@ export function createSlice<
     name,
     sliceActionNameGetter,
     reducers,
-    reducersToActions,
+    reducersToActions
   );
 
   const reducer = createSliceReducer<SliceState, SliceName, CaseReducers>(
     initialState,
-    sliceActionNameGetter,
     actions,
     reducers,
     extraReducers
@@ -88,6 +87,7 @@ export function createNamespacedSlice<
   initialState,
   reducers,
   extraReducers,
+  reducersToActions,
   sliceActionNameGetter = defaultSliceActionNameGetter,
 }: SliceOptions<SliceName, SliceState, CaseReducers>): NamespacedSlice<
   SliceState,
@@ -104,6 +104,7 @@ export function createNamespacedSlice<
     initialState,
     reducers,
     extraReducers,
+    reducersToActions,
     sliceActionNameGetter,
   });
 

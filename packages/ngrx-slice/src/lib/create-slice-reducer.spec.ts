@@ -6,8 +6,6 @@ const initialState = {
   foo: 1,
 };
 
-const getter = (featureName: string, actionName: string) =>
-  `${featureName}/${actionName}`;
 
 const actions = {
   increment: createAction('foo/increment'),
@@ -22,7 +20,6 @@ describe(createSliceReducer.name, () => {
   beforeEach(() => {
     reducer = createSliceReducer(
       initialState,
-      getter,
       actions as any,
       {
         increment: (state) => {
@@ -33,7 +30,7 @@ describe(createSliceReducer.name, () => {
         },
       },
       [
-        on<typeof initialState, [typeof double]>(double, (state) => ({
+        on(double, (state) => ({
           ...state,
           foo: state.foo * 2,
         })),

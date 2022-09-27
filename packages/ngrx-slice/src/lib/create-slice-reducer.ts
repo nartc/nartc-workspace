@@ -15,7 +15,6 @@ export function createSliceReducer<
   CaseReducers extends SliceCaseReducers<SliceState> = SliceCaseReducers<SliceState>
 >(
   initialState: SliceState,
-  sliceActionNameGetter: SliceActionNameGetter,
   actions: SliceActions<SliceState, CaseReducers>,
   reducers: CaseReducers,
   extraReducers?: SliceOptions<
