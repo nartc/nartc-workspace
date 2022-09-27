@@ -29,7 +29,10 @@
     },
     "@release-it/bumper": {
       "in": "packages/ngx-lil-gui/version.json",
-      "out": ["dist/packages/ngx-lil-gui/package.json"]
+      "out": [
+        "packages/ngx-lil-gui/version.json",
+        "dist/packages/ngx-lil-gui/package.json"
+      ]
     }
   },
   "git": {

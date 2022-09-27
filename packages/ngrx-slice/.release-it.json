@@ -29,7 +29,10 @@
     },
     "@release-it/bumper": {
       "in": "packages/ngrx-slice/version.json",
-      "out": "dist/packages/ngrx-slice/package.json"
+      "out": [
+        "packages/ngrx-slice/version.json",
+        "dist/packages/ngrx-slice/package.json"
+      ]
     }
   },
   "git": {
