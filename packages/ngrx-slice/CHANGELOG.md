@@ -1,5 +1,12 @@
 
 
+## [6.5.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.4.0...ngrx-slice-v6.5.0) (2022-09-27)
+
+
+### Features
+
+* **slice:** remove ngrx immer dependency ([01c6687](https://github.com/nartc/nartc-workspace/commit/01c6687f3cfdaf0322d91a00c39d982b515cc3f5))
+
 ## [6.4.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.3.0...ngrx-slice-v6.4.0) (2022-09-24)
 
 
