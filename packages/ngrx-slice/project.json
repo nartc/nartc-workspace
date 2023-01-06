@@ -1,4 +1,5 @@
 {
+  "name": "ngrx-slice",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/ngrx-slice/src",
@@ -6,7 +7,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/packages/ngrx-slice"],
+      "outputs": ["{workspaceRoot}/dist/packages/ngrx-slice"],
       "options": {
         "project": "packages/ngrx-slice/ng-package.json"
       },
@@ -22,7 +23,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/ngrx-slice"],
+      "outputs": ["{workspaceRoot}/coverage/packages/ngrx-slice"],
       "options": {
         "jestConfig": "packages/ngrx-slice/jest.config.ts",
         "passWithNoTests": true
@@ -40,13 +41,13 @@
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "dotenv release-it -- --config=./packages/ngrx-slice/.release-it.json"
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "npm publish",
         "cwd": "dist/packages/ngrx-slice"
