@@ -48,6 +48,9 @@
   },
   "hooks": {
     "before:bump": "pnpm exec nx build ngx-lil-gui",
-    "after:bump": "git checkout -- package.json"
+    "after:bump": [
+      "git checkout -- package.json",
+      "git checkout -- package-lock.json"
+    ]
   }
 }
