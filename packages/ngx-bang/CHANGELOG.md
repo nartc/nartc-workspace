@@ -1,5 +1,7 @@
 
 
+## [1.3.0](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.2.0...ngx-bang-v1.3.0) (2023-01-06)
+
 ## [1.2.0](https://github.com/nartc/nartc-workspace/compare/ngx-bang-v1.1.1...ngx-bang-v1.2.0) (2022-05-15)
 
 
