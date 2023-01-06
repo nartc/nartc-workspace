@@ -23,6 +23,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://nartc.me/"><img src="https://avatars.githubusercontent.com/u/25516557?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chau Tran</b></sub></a><br /><a href="https://github.com/nartc/nartc-workspace/commits?author=nartc" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/19784438?v=4" width="100px;" alt=""/><br /><sub><b>Gleb Malov</b></sub></a><br /><a href="https://github.com/masterworgen" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
