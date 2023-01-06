@@ -28,8 +28,11 @@
       }
     },
     "@release-it/bumper": {
-      "in": "packages/ngx-bang/package.json",
-      "out":[ "packages/ngx-bang/package.json", "dist/packages/ngx-bang/package.json"]
+      "in": "packages/ngx-bang/version.json",
+      "out": [
+        "packages/ngx-bang/version.json",
+        "dist/packages/ngx-bang/package.json"
+      ]
     }
   },
   "git": {
@@ -45,6 +48,9 @@
   },
   "hooks": {
     "before:bump": "pnpm exec nx build ngx-bang",
-    "after:bump": "git checkout -- package.json"
+    "after:bump": [
+      "git checkout -- package.json",
+      "git checkout -- package-lock.json"
+    ]
   }
 }
