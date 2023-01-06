@@ -1,5 +1,18 @@
 
 
+## [6.6.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.5.0...ngrx-slice-v6.6.0) (2023-01-06)
+
+
+### Features
+
+* **slice:** update nx ([61175e6](https://github.com/nartc/nartc-workspace/commit/61175e63f7c09e62f7094cedc40e4488e43d0c05))
+* **slice:** update package json ([6080ed2](https://github.com/nartc/nartc-workspace/commit/6080ed202c92ea40800a328296f8ee57263dcc3b))
+
+
+### Bug Fixes
+
+* **slice:** clean up and adjust tsconfig to exclude fixture file ([8bacc82](https://github.com/nartc/nartc-workspace/commit/8bacc820884133d6a68975674f93cbdad4877130))
+
 ## [6.5.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.4.0...ngrx-slice-v6.5.0) (2022-09-27)
 
 
