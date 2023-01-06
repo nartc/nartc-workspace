@@ -3,7 +3,6 @@ import { createReducer, on } from '@ngrx/store';
 import { produce } from 'immer';
 import type {
   CaseReducer,
-  SliceActionNameGetter,
   SliceActions,
   SliceCaseReducers,
   SliceOptions,

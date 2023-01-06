@@ -1,4 +1,4 @@
-import { createNamespacedSlice, createSlice, noopReducer } from './create-slice';
+import { createNamespacedSlice, noopReducer } from './create-slice';
 import type { PayloadAction } from './typings';
 import { classify } from './utils';
 
@@ -37,7 +37,7 @@ const { CounterActions, CounterSelectors, CounterFeature } =
         },
         trigger: noopReducer<{ multiplier: number }>(),
       },
-    }
+    },
   });
 
 const myInitialState: MyCounterState = {

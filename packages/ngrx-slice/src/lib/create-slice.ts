@@ -1,4 +1,4 @@
-import {createFeatureSelector, ActionCreator} from '@ngrx/store';
+import { createFeatureSelector } from '@ngrx/store';
 import type { Draft } from 'immer';
 import { createSliceActions } from './create-slice-actions';
 import { createSliceReducer } from './create-slice-reducer';
