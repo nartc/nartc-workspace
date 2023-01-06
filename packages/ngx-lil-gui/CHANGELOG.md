@@ -1,5 +1,12 @@
 
 
+## [2.2.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.2.0...ngx-lil-gui-v2.2.0) (2023-01-06)
+
+
+### Features
+
+* **lil-gui:** update nx ([17c47a3](https://github.com/nartc/nartc-workspace/commit/17c47a304c0fcb615e0a4913ff749d5e2eec2c24))
+
 ## [2.2.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.1.0...ngx-lil-gui-v2.2.0) (2022-07-13)
 
 
