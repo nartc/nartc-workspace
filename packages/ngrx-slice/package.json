@@ -1,32 +1,32 @@
 {
-    "name": "ngrx-slice",
-    "version": "0.0.0",
-    "license": "MIT",
-    "description": "createSlice plugin for NgRX",
-    "keywords": [
-        "ngrx",
-        "angular",
-        "redux toolkit",
-        "create slice",
-        "typescript"
-    ],
-    "author": {
-        "name": "Chau Tran",
-        "email": "nartc7789@gmail.com",
-        "url": "https://nartc.me"
-    },
-    "repository": {
-        "url": "https://github.com/nartc/nartc-workspace",
-        "directory": "packages/ngrx-slice",
-        "type": "git"
-    },
-    "peerDependencies": {
-        "@angular/common": "^13.0.0 || ^14.0.0 || ^15.0.0",
-        "@angular/core": "^13.0.0 || ^14.0.0 || ^15.0.0",
-        "@ngrx/store": "^13.0.0 || ^14.0.0 || ^15.0.0",
-        "immer": "~9.0.0"
-    },
-    "dependencies": {
-        "tslib": "^2.3.0"
-    }
+  "name": "ngrx-slice",
+  "version": "0.0.0-replace",
+  "license": "MIT",
+  "description": "createSlice plugin for NgRX",
+  "keywords": [
+    "ngrx",
+    "angular",
+    "redux toolkit",
+    "create slice",
+    "typescript"
+  ],
+  "author": {
+    "name": "Chau Tran",
+    "email": "nartc7789@gmail.com",
+    "url": "https://nartc.me"
+  },
+  "repository": {
+    "url": "https://github.com/nartc/nartc-workspace",
+    "directory": "packages/ngrx-slice",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^13.0.0 || ^14.0.0 || ^15.0.0",
+    "@angular/core": "^13.0.0 || ^14.0.0 || ^15.0.0",
+    "@ngrx/store": "^13.0.0 || ^14.0.0 || ^15.0.0",
+    "immer": "~9.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
 }
