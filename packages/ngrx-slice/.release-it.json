@@ -47,10 +47,7 @@
     "releaseName": "Release: ngrx-slice ${version}"
   },
   "hooks": {
-    "before:bump": "npx nx build ngrx-slice",
-    "after:bump": [
-      "git checkout -- package.json",
-      "git checkout -- package-lock.json"
-    ]
+    "before:bump": "yarn nx build ngrx-slice",
+    "after:bump": ["git checkout -- package.json"]
   }
 }
