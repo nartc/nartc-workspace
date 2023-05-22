@@ -6,7 +6,7 @@
   "prefix": "nartc",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/packages/ngx-bang"],
       "options": {
         "project": "packages/ngx-bang/ng-package.json"
@@ -28,7 +28,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/ngx-bang"],
       "options": {
         "jestConfig": "packages/ngx-bang/jest.config.ts",
@@ -36,7 +36,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "packages/ngx-bang/src/**/*.ts",

@@ -9,9 +9,9 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import type { Snapshot } from 'ngx-bang';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {
   createInvalidate,
   destroy,

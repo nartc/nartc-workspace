@@ -1,50 +1,69 @@
 {
-  "extends": "nx/presets/core.json",
-  "npmScope": "nartc",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
         "accessToken": "NjA3NmYxZjAtZGRjOC00NjQwLWI3YzItOTMyMDgzODkxN2FkfHJlYWQtd3JpdGU="
       }
     }
   },
+  "extends": "nx/presets/core.json",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nx/angular"
+  },
   "generators": {
-    "@nrwl/angular:application": {
+    "@nx/angular:application": {
       "style": "css",
       "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "none"
     },
-    "@nrwl/angular:library": {
+    "@nx/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest"
     },
-    "@nrwl/angular:component": {
+    "@nx/angular:component": {
       "style": "css"
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*"],
-    "prod": ["!{projectRoot}/**/*.spec.ts"]
+    "default": [
+      "{projectRoot}/**/*"
+    ],
+    "prod": [
+      "!{projectRoot}/**/*.spec.ts"
+    ]
   },
   "targetDefaults": {
     "build": {
-      "inputs": ["prod", "^prod"],
-      "dependsOn": ["^build"]
+      "inputs": [
+        "prod",
+        "^prod"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test": {
-      "inputs": ["default", "^prod"]
+      "inputs": [
+        "default",
+        "^prod"
+      ]
     },
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json"
+      ]
     }
   },
   "pluginsConfig": {

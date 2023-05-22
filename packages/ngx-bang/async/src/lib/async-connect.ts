@@ -1,4 +1,4 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { effect, getUnsubscribes } from 'ngx-bang';
 import type { Observable } from 'rxjs';
 import { isObservable } from 'rxjs';
