@@ -1,4 +1,4 @@
-import createNextState, { isDraft } from 'immer';
+import { produce, isDraft } from 'immer';
 import type { PayloadAction } from 'ngrx-slice';
 import type { EntityState, PreventAny } from './typings';
 
@@ -47,6 +47,6 @@ export function createStateOperator<TData, TArg>(
       return state;
     }
 
-    return createNextState(state, runMutator);
+    return produce(state, runMutator);
   };
 }
