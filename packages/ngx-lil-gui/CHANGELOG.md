@@ -1,5 +1,12 @@
 
 
+## [3.0.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.2.1...ngx-lil-gui-v3.0.0) (2023-05-22)
+
+
+### Features
+
+* **lil-gui:** bump dependencies to support Angular 16 ([6965cc8](https://github.com/nartc/nartc-workspace/commit/6965cc8fbe6825301becc5600931d3f03a74d6ad))
+
 ## [2.2.0](https://github.com/nartc/nartc-workspace/compare/ngx-lil-gui-v2.2.0...ngx-lil-gui-v2.2.0) (2023-01-06)
 
 
