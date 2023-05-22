@@ -1,5 +1,17 @@
 
 
+## [7.0.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.6.0...ngrx-slice-v7.0.0) (2023-05-22)
+
+
+### Features
+
+* **slice:** bump dependencies for angular 16, drop angular 13 ([951fd5c](https://github.com/nartc/nartc-workspace/commit/951fd5c6397f943f332a17e5698a9e734a93a35f))
+
+
+### Bug Fixes
+
+* **slice:** use correct import ([646eff3](https://github.com/nartc/nartc-workspace/commit/646eff3c4a88f4551459516c832318ec6b941e23))
+
 ## [6.6.0](https://github.com/nartc/nartc-workspace/compare/ngrx-slice-v6.5.0...ngrx-slice-v6.6.0) (2023-01-06)
 
 
