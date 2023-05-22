@@ -47,10 +47,7 @@
     "releaseName": "Release: ngx-lil-gui ${version}"
   },
   "hooks": {
-    "before:bump": "pnpm exec nx build ngx-lil-gui",
-    "after:bump": [
-      "git checkout -- package.json",
-      "git checkout -- package-lock.json"
-    ]
+    "before:bump": "yarn nx build ngx-lil-gui",
+    "after:bump": ["git checkout -- package.json"]
   }
 }
