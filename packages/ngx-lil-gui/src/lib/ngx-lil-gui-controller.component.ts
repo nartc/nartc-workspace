@@ -1,9 +1,7 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
+  Directive,
   EventEmitter,
   inject,
-  InjectFlags,
   Input,
   OnDestroy,
   OnInit,
@@ -17,14 +15,12 @@ import type {
   NgxLilGuiControllerFinishChange,
 } from './types';
 
-@Component({
-  selector: 'ngx-lil-gui-controller[property]',
-  template: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+@Directive({
+  selector: 'ngx-lil-gui-controller',
   standalone: true,
 })
 export class NgxLilGuiController implements OnInit, OnDestroy {
-  @Input() property!: string;
+  @Input({ required: true }) property!: string;
   @Input() controllerConfig?: NgxLilGuiControllerConfig[string];
 
   @Output() valueChange = new EventEmitter<NgxLilGuiControllerChange>();
@@ -34,7 +30,7 @@ export class NgxLilGuiController implements OnInit, OnDestroy {
 
   #controller?: Controller;
 
-  #parentGui = inject(NgxLilGui, InjectFlags.Optional | InjectFlags.SkipSelf);
+  #parentGui = inject(NgxLilGui, { optional: true, skipSelf: true });
 
   ngOnInit() {
     if (!this.#parentGui) {

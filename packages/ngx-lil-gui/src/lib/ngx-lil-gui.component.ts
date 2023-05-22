@@ -4,7 +4,6 @@ import {
   ElementRef,
   EventEmitter,
   inject,
-  InjectFlags,
   Input,
   NgZone,
   OnDestroy,
@@ -53,12 +52,10 @@ export class NgxLilGui implements OnInit, OnDestroy {
   @Output() guiReady = new EventEmitter<GUI>();
 
   #gui!: GUI;
-
-  #hostElement = inject(
-    ElementRef,
-    InjectFlags.SkipSelf
-  ) as ElementRef<HTMLElement>;
-  #parentGUI = inject(NgxLilGui, InjectFlags.Optional | InjectFlags.SkipSelf);
+  #hostElement = inject<ElementRef<HTMLElement>>(ElementRef, {
+    skipSelf: true,
+  });
+  #parentGUI = inject(NgxLilGui, { skipSelf: true, optional: true });
   #ngZone = inject(NgZone);
 
   ngOnInit() {
